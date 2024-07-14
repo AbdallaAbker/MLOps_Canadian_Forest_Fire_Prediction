@@ -1,0 +1,15 @@
+map_target_column:
+  High Risk: 3
+  Low Risk: 1
+  Medium Risk: 2
+  No Fire: 0
+medians:
+  Drought_Index: 394.28
+  Humidity: 56.07
+  Oxygen: 19.99
+  Temperature: 12.94
+modes:
+  Fire_Seasonality: Fall
+  Land_Use: Industrial
+  Province: Saskatchewan
+  Vegetation_Type: Forest
