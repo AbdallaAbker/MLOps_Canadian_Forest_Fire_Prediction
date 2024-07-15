@@ -10,6 +10,8 @@ from sklearn.compose import ColumnTransformer
 
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score
 
+from prefect import task, flow
+
 # Modelling
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
@@ -21,17 +23,19 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-mlflow.set_tracking_uri = "http://127.0.0.0:5000"
+mlflow.set_tracking_uri = "http://0.0.0.0:5000"
 mlflow.set_experiment = "baseline-model-01"
 
 
-def read_dataset(dataset_file_path):
+
+@task(name="Read_dataset", retries=5, retry_delay_seconds=5)
+def read_dataset(dataset_file_path: str):
     """Read dataset from the spicified location"""
     df = pd.read_csv(dataset_file_path)
     return df
 
-
-def load_preprocessing_params(preprocessing_params_file):
+@task(name="load_preprocessing_params")
+def load_preprocessing_params(preprocessing_params_file: str):
     """Load preprocessing parameters from yaml file in the artifacts folder"""
     with open(preprocessing_params_file) as file:
         preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
@@ -53,15 +57,15 @@ def accuracy_measures(y_test, predictions, avg_method):
     f1score = f1_score(y_test, predictions, average=avg_method)
     return accuracy, precision, recall, f1score
 
-
-def load_model_pipeline(model_pipeline_path):
+@task(name="load_model", retries=2, retry_delay_seconds=5)
+def load_model_pipeline(model_pipeline_path:str):
     """Load preprocessing pipleine and model"""
     baseline_model = joblib.load(
         os.path.join(model_pipeline_path, "baseline-model.joblib")
     )
 
-
-def run_expirement(dataset_path, model_pipeline_path):
+@flow(name="run_expirement", log_prints=True)
+def run_expirement(dataset_path: str, model_pipeline_path: str):
 
     with mlflow.start_run():
 
@@ -75,7 +79,7 @@ def run_expirement(dataset_path, model_pipeline_path):
             load_preprocessing_params(preprocessing_params_file)
         )
 
-        # mlflow.log_params("modes": modes, "median": medians, "map_target_column": map_target_column, "num_columns": num_columns, "cat_columns": cat_columns, "target": target)
+
 
         numeric_transformer = StandardScaler()
         oh_transformer = OneHotEncoder()
@@ -92,12 +96,6 @@ def run_expirement(dataset_path, model_pipeline_path):
         )
 
         baseline_model.fit(X_train, y_train)
-
-        joblib.dump(
-            baseline_model, os.path.join(model_pipeline_path, "baseline-model.joblib")
-        )
-
-        mlflow.log_artifacts(model_pipeline_path, "baseline_model")
         y_pred = baseline_model.predict(X_test)
         
         accuracy, precision, recall, f1score = accuracy_measures(y_test, y_pred, 'macro')
@@ -112,12 +110,12 @@ def run_expirement(dataset_path, model_pipeline_path):
         print("Confusion Matrix: \n", Confusion_Matrix)
         
         
-        pathlib.Path("model_pipeline_path").mkdir(exist_ok=True)
+        # pathlib.Path("model_pipeline_path").mkdir(exist_ok=True)
         joblib.dump(
             baseline_model, os.path.join(model_pipeline_path, "baseline-model.joblib")
         )
 
-        mlflow.model(model_pipeline_path, artifact_path="baseline_model")
+        mlflow.sklearn.log_model(model_pipeline_path, artifact_path="baseline_model")
 
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("precision", precision)
