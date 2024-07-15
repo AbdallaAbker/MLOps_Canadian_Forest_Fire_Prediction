@@ -1,6 +1,8 @@
 import argparse
 import os
 
+import datetime
+
 import joblib
 import mlflow
 import pandas as pd
@@ -21,9 +23,28 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-mlflow.set_tracking_uri = "http://127.0.0.0:5000"
-mlflow.set_experiment = "baseline-model-01"
+datetime_meta = 1 #datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+mlflow.set_tracking_uri = "http://0.0.0.0:5000"
+
+experiment_name = f"baseline-model-{datetime_meta}"
+if not mlflow.get_experiment_by_name(experiment_name):
+    experiment_id = mlflow.create_experiment(experiment_name)
+else:
+    experiment_id = mlflow.get_experiment_by_name(experiment_name).experiment_id
+
+mlflow.set_experiment(experiment_id=experiment_id)
+
+
+with open("../artiifacts/yaml/preprocessing-params.yaml") as file:
+    preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
+    
+    preprocessing_params["experiment_id"] = experiment_id
+                 
+with open("../artiifacts/yaml/preprocessing-params.yaml", "w") as file:
+    yaml.dump(preprocessing_params, file)
+    
+    
 
 def read_dataset(dataset_file_path):
     """Read dataset from the spicified location"""
@@ -38,12 +59,11 @@ def load_preprocessing_params(preprocessing_params_file):
 
     modes = preprocessing_params["modes"]
     medians = preprocessing_params["medians"]
-    map_target_column = preprocessing_params["map_target_column"]
     num_columns = preprocessing_params["num_columns"]
     cat_columns = preprocessing_params["cat_columns"]
     target = preprocessing_params["target_column"]
 
-    return modes, medians, map_target_column, num_columns, cat_columns, target
+    return modes, medians, num_columns, cat_columns, target
 
 
 def accuracy_measures(y_test, predictions, avg_method):
@@ -71,11 +91,9 @@ def run_expirement(dataset_path, model_pipeline_path):
         y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
 
         # baseline_model = load_model_pipeline(model_pipeline_path)
-        modes, medians, map_target_column, num_columns, cat_columns, target = (
+        modes, medians,  num_columns, cat_columns, target = (
             load_preprocessing_params(preprocessing_params_file)
         )
-
-        # mlflow.log_params("modes": modes, "median": medians, "map_target_column": map_target_column, "num_columns": num_columns, "cat_columns": cat_columns, "target": target)
 
         numeric_transformer = StandardScaler()
         oh_transformer = OneHotEncoder()
@@ -111,13 +129,11 @@ def run_expirement(dataset_path, model_pipeline_path):
         Confusion_Matrix = confusion_matrix(y_pred, y_test)
         print("Confusion Matrix: \n", Confusion_Matrix)
         
-        
-        pathlib.Path("model_pipeline_path").mkdir(exist_ok=True)
         joblib.dump(
             baseline_model, os.path.join(model_pipeline_path, "baseline-model.joblib")
         )
 
-        mlflow.model(model_pipeline_path, artifact_path="baseline_model")
+        mlflow.sklearn.log_model(model_pipeline_path, artifact_path="baseline_model")
 
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("precision", precision)
@@ -128,7 +144,7 @@ def run_expirement(dataset_path, model_pipeline_path):
 if __name__ == "__main__":
 
     dataset_path = "../data/processed/"
-    model_pipeline_path = "../artiifacts/models/"
-    preprocessing_params_file = "../artiifacts/yaml/preprocessing-params.yaml"
+    model_pipeline_path = "../artifacts/models/"
+    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
 
     run_expirement(dataset_path, model_pipeline_path)

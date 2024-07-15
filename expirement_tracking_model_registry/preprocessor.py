@@ -14,9 +14,9 @@ def read_dataset(dataset_file_path):
     return df
 
 
-def store_data(df, dest_file_path, file_name):
+def store_data(df, dest_folder_path, file_name):
     """Load dataset to the spicified location"""
-    file_path = os.path.join(dest_file_path, file_name)
+    file_path = os.path.join(dest_folder_path, file_name)
     df.to_csv(file_path, index=False)
 
 
@@ -27,12 +27,11 @@ def load_preprocessing_params(preprocessing_params_file):
 
     modes = preprocessing_params["modes"]
     medians = preprocessing_params["medians"]
-    map_target_column = preprocessing_params["map_target_column"]
     num_columns = preprocessing_params["num_columns"]
     cat_columns = preprocessing_params["cat_columns"]
     target = preprocessing_params["target_column"]
 
-    return modes, medians, map_target_column, num_columns, cat_columns, target
+    return modes, medians, num_columns, cat_columns, target
 
 
 def features_fillna(df, modes, medians):
@@ -62,7 +61,7 @@ def split_dataset(df, cat_columns, num_columns, target):
 def main(raw_data_path, dest_path, param_path):
 
     df = read_dataset(raw_data_path)
-    modes, medians, map_target_column, num_columns, cat_columns, target = (
+    modes, medians, num_columns, cat_columns, target = (
         load_preprocessing_params(preprocessing_params_file)
     )
     df = features_fillna(df, modes, medians)
@@ -77,35 +76,11 @@ def main(raw_data_path, dest_path, param_path):
     store_data(y_test, dest_path, file_name="y_test.csv")
 
 
-# def load_model_pipeline(model_pipeline_path):
-
-#     """Load preprocessing pipleine and model"""
-#     baseline_model = joblib.load(model_pipeline_path)
-
 if __name__ == "__main__":
-    file_name = ""
+    
     dataset_file_path = "../data/raw/dataset.csv"
-    dest_file_path = f"../data/processed/"
-    model_pipeline_path = "../artiifacts/baseline-model.joblib"
-    preprocessing_params_file = "../artiifacts/yaml/preprocessing-params.yaml"
+    dest_folder_path = f"../data/processed/"
+    model_pipeline_path = "../artifacts/baseline-model.joblib"
+    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--raw_data_path",
-        default=dataset_file_path,
-        help="the location where the raw red wine quality data was saved",
-    )
-    parser.add_argument(
-        "--dest_path",
-        default=dest_file_path,
-        help="the location where the resulting files will be saved.",
-    )
-
-    parser.add_argument(
-        "--param_path",
-        default=preprocessing_params_file,
-        help="the location where the preprocessing param stored in a yaml file ",
-    )
-
-    args = parser.parse_args()
-    main(args.raw_data_path, args.dest_path, args.param_path)
+    main(dataset_file_path, dest_folder_path, preprocessing_params_file)
