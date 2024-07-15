@@ -3,11 +3,6 @@ cat_columns:
 - Vegetation_Type
 - Fire_Seasonality
 - Land_Use
-map_target_column:
-  High Risk: 3
-  Low Risk: 1
-  Medium Risk: 2
-  No Fire: 0
 medians:
   Drought_Index: 394.28
   Humidity: 56.07
