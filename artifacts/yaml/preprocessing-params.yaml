@@ -3,7 +3,7 @@ cat_columns:
 - Vegetation_Type
 - Fire_Seasonality
 - Land_Use
-experiment_id: '2'
+experiment_id: '1'
 medians:
   Drought_Index: 394.28
   Humidity: 56.07

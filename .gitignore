@@ -166,3 +166,4 @@ data/*
 *venv
 mlflow.db
 mlruns
+*env*

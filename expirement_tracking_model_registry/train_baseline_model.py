@@ -25,7 +25,9 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 
-mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+mlflow.set_tracking_uri("http://0.0.0.0:5000/")
+# mlflow.set_tracking_uri("http://20.72.209.197:5000")
+# mlflow.set_tracking_uri("http://20.112.65.210:5000")
 
 datetime_meta = 1 #datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 experiment_name = f"baseline-model-{datetime_meta}"
