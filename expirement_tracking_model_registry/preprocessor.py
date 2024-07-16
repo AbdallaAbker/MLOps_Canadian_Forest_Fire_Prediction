@@ -37,10 +37,10 @@ def load_preprocessing_params(preprocessing_params_file):
 def features_fillna(df, modes, medians):
     """Fill missing values using the same median and mode values"""
     for col in modes:
-        df[col].fillna(modes[col], inplace=True)
+        df[col] = df[col].fillna(modes[col])
 
     for col in medians:
-        df[col].fillna(medians[col], inplace=True)
+        df[col] = df[col].fillna(medians[col])
 
     return df
 

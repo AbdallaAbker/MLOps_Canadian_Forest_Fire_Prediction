@@ -23,10 +23,11 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+
+
+mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+
 datetime_meta = 1 #datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-mlflow.set_tracking_uri = "http://0.0.0.0:5000"
-
 experiment_name = f"baseline-model-{datetime_meta}"
 if not mlflow.get_experiment_by_name(experiment_name):
     experiment_id = mlflow.create_experiment(experiment_name)
@@ -36,12 +37,12 @@ else:
 mlflow.set_experiment(experiment_id=experiment_id)
 
 
-with open("../artiifacts/yaml/preprocessing-params.yaml") as file:
+with open("../artifacts/yaml/preprocessing-params.yaml") as file:
     preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
     
     preprocessing_params["experiment_id"] = experiment_id
                  
-with open("../artiifacts/yaml/preprocessing-params.yaml", "w") as file:
+with open("../artifacts/yaml/preprocessing-params.yaml", "w") as file:
     yaml.dump(preprocessing_params, file)
     
     
