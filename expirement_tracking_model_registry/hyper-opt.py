@@ -14,6 +14,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+import datetime
 
 from sklearn.metrics import (
     accuracy_score,
@@ -23,8 +24,16 @@ from sklearn.metrics import (
 )
 
 
-mlflow.set_tracking_uri("http://0.0.0.0:5000")
-mlflow.set_experiment("baseline-model-01")
+mlflow.set_tracking_uri("http://0.0.0.0:5000/")
+
+datetime_meta = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+experiment_name = f"best-model-{datetime_meta}"
+if not mlflow.get_experiment_by_name(experiment_name):
+    experiment_id = mlflow.create_experiment(experiment_name)
+else:
+    experiment_id = mlflow.get_experiment_by_name(experiment_name).experiment_id
+
+mlflow.set_experiment(experiment_id=experiment_id)
 
 
 def read_dataset(dataset_file_path):
@@ -40,12 +49,11 @@ def load_preprocessing_params(preprocessing_params_file):
 
     modes = preprocessing_params["modes"]
     medians = preprocessing_params["medians"]
-    map_target_column = preprocessing_params["map_target_column"]
     num_columns = preprocessing_params["num_columns"]
     cat_columns = preprocessing_params["cat_columns"]
     target = preprocessing_params["target_column"]
 
-    return modes, medians, map_target_column, num_columns, cat_columns, target
+    return modes, medians, num_columns, cat_columns, target
 
 
 def accuracy_measures(y_test, predictions, avg_method):
@@ -56,11 +64,11 @@ def accuracy_measures(y_test, predictions, avg_method):
     return accuracy, precision, recall, f1score
 
 
-def load_model_pipeline(model_pipeline_path):
-    """Load preprocessing pipeline and model"""
-    baseline_model = joblib.load(
-        os.path.join(model_pipeline_path, "baseline-model.joblib")
-    )
+# def load_model_pipeline(model_pipeline_path):
+#     """Load preprocessing pipeline and model"""
+#     baseline_model = joblib.load(
+#         os.path.join(model_pipeline_path, "baseline-model.joblib")
+#     )
 
 
 
@@ -68,18 +76,21 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
     best_accuracy = 0
     best_model = None
     best_model_name = None
+    
+    #set autlog true to capture as much of possible logs
+    mlflow.autolog(False)
 
-    with mlflow.start_run():
+    with mlflow.start_run(nested=True):
         X_train = read_dataset(os.path.join(dataset_path, "X_train.csv"))
         y_train = read_dataset(os.path.join(dataset_path, "y_train.csv"))
         X_test = read_dataset(os.path.join(dataset_path, "X_test.csv"))
         y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
 
-        modes, medians, map_target_column, num_columns, cat_columns, target = load_preprocessing_params(preprocessing_params_file)
+        #retrieve reprprocessing params
+        modes, medians, num_columns, cat_columns, target = load_preprocessing_params(preprocessing_params_file)
 
         numeric_transformer = StandardScaler()
         oh_transformer = OneHotEncoder()
-
         preprocessor = ColumnTransformer(
             [
                 ("OneHotEncoder", oh_transformer, cat_columns),
@@ -89,6 +100,7 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
 
         with open(hyperparams_file) as file:
             hyperparams = yaml.load(file, Loader=yaml.FullLoader)
+
 
         for model_name, params in hyperparams['models'].items():
             print(f"Running experiment for {model_name} with parameters: {params}")
@@ -135,15 +147,14 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
                     best_model_name = f"{model_name}_model_{i}"
                     
         preprocessing_params = {
-        "best_model": best_model,
         "num_columns": num_columns,
         "target_column": "Target",
         'modes': modes,
         'medians': medians,
-        'map_target_column': map_target_column
+        "experiment_id": experiment_id
     }
-
-    with open("../artiifacts/yaml/preprocessing-params.yaml", "w") as file:
+    #update yaml param with new param best model pipeline
+    with open(preprocessing_params_file, "w") as file:
         yaml.dump(preprocessing_params, file)               
 
     return best_model, best_model_name, best_accuracy
@@ -154,7 +165,7 @@ if __name__ == "__main__":
 
     dataset_path = "../data/processed/"
     model_pipeline_path = "../artifacts/models/"
-    preprocessing_params_file = "../artiifacts/yaml/preprocessing-params.yaml"
-    hyperparams_file = "../artiifacts/yaml/hyperparams.yaml"
+    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
+    hyperparams_file = "../artifacts/yaml/hyperparams.yaml"
 
     run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file)

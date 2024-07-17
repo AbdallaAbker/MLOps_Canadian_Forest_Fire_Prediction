@@ -29,7 +29,7 @@ mlflow.set_tracking_uri("http://0.0.0.0:5000/")
 # mlflow.set_tracking_uri("http://20.72.209.197:5000")
 # mlflow.set_tracking_uri("http://20.112.65.210:5000")
 
-datetime_meta = 1 #datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+datetime_meta = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 experiment_name = f"baseline-model-{datetime_meta}"
 if not mlflow.get_experiment_by_name(experiment_name):
     experiment_id = mlflow.create_experiment(experiment_name)
@@ -85,7 +85,7 @@ def load_model_pipeline(model_pipeline_path):
 
 
 def run_expirement(dataset_path, model_pipeline_path):
-
+    mlflow.autolog(True)
     with mlflow.start_run():
 
         X_train = read_dataset(os.path.join(dataset_path, "X_train.csv"))
