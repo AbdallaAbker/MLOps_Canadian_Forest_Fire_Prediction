@@ -11,11 +11,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the necessary directories into the container
-COPY ./artifacts ./artifacts
-COPY ./model_deployment ./model_deployment
+COPY ./artifacts/models/best_model.joblib ./artifacts/models/best_model.joblib
+COPY ./app/ ./app/
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Expose the ports the apps run on
+EXPOSE 8500 8000
 
-# ENTRYPOINT for Uvicorn
-ENTRYPOINT ["uvicorn", "model_deployment.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Command to run the FastAPI app
+CMD ["uvicorn", "app.run_app:app", "--host", "0.0.0.0", "--port", "8000"]

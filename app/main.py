@@ -1,3 +1,5 @@
+#app/run_app.py
+
 import joblib
 import numpy as np
 from fastapi import FastAPI, HTTPException
@@ -11,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Load the model
 try:
-    model = joblib.load("../artifacts/models/best_model.joblib")
+    model = joblib.load("./artifacts/models/best_model.joblib")
     logger.info("Model loaded successfully.")
 except Exception as e:
     logger.error(f"Error loading the model: {e}")
