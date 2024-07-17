@@ -1,6 +1,6 @@
-## Welcome to Expirement Tracking  Model Registry Section
+## Welcome to Expirement Tracking  Model Registry Section :wave:
 
-![alt text](../snapshots/mlflow-components.png)
+![alt text](../snapshots/expirement-tracking.png)
 
 
 - Activate environment source. e.g. for linux system run: ./mlvenv/bin/activate
