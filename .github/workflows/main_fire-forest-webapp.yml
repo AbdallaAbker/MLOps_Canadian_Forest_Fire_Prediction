@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://aabkeropscontainerregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a8eb20b39f334fc699236b01f3c1db0b }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d062a00afc4c47dba9a4a838f713ce29 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_cbb9d7510fbe4adc97836db23cf66618 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_14535f624fe942f8b3b3f8c8218172ba }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a8eb20b39f334fc699236b01f3c1db0b }}/mlops-fireforest:${{ github.sha }}
+        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cbb9d7510fbe4adc97836db23cf66618 }}/mlops-fireforest:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'fire-forest-webapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8067c4e8e6f44410b67a67853e379f31 }}
-        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a8eb20b39f334fc699236b01f3c1db0b }}/mlops-fireforest:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_85a487f3e79f4503b18413b4ff48dbde }}
+        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cbb9d7510fbe4adc97836db23cf66618 }}/mlops-fireforest:${{ github.sha }}'
