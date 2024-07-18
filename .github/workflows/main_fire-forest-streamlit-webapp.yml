@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://aabkeropscontainerregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_ac3ca421cde34b0b9af819e482a66e08 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_1b7440ae36f442cd87ddb29470861468 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_53a43c2af8e84af689ef7593a6c3b54b }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_3a00bfadf9bb40a2aecf6b6245bfaf6b }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ac3ca421cde34b0b9af819e482a66e08 }}/fastapi, streamlit:${{ github.sha }}
+        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_53a43c2af8e84af689ef7593a6c3b54b }}/fastapi; streamlit;:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'fire-forest-streamlit-webapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_0b440e787bbd49eaa7f489f31d7efbec }}
-        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ac3ca421cde34b0b9af819e482a66e08 }}/fastapi, streamlit:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e6268e1307dd4e3395a53f7a31f6bff5 }}
+        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_53a43c2af8e84af689ef7593a6c3b54b }}/fastapi; streamlit;:${{ github.sha }}'
