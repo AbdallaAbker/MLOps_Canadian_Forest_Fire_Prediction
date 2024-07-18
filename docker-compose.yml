@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   fastapi:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
@@ -10,7 +12,9 @@ services:
       - .:/app
 
   streamlit:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
     command: streamlit run app/run_app.py --server.port 8500
     ports:
       - "8500:8500"
