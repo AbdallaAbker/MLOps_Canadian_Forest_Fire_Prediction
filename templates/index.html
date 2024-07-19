@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forest Fire Prediction</title>
+</head>
+<body>
+    <h1>Forest Fire Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="province">Province:</label>
+        <input type="text" id="province" name="province"><br><br>
+        
+        <label for="vegetation_type">Vegetation Type:</label>
+        <input type="text" id="vegetation_type" name="vegetation_type"><br><br>
+        
+        <label for="fire_seasonality">Fire Seasonality:</label>
+        <input type="text" id="fire_seasonality" name="fire_seasonality"><br><br>
+        
+        <label for="land_use">Land Use:</label>
+        <input type="text" id="land_use" name="land_use"><br><br>
+        
+        <label for="temperature">Temperature:</label>
+        <input type="number" id="temperature" name="temperature" step="0.1"><br><br>
+        
+        <label for="oxygen">Oxygen:</label>
+        <input type="number" id="oxygen" name="oxygen" step="0.1"><br><br>
+        
+        <label for="humidity">Humidity:</label>
+        <input type="number" id="humidity" name="humidity" step="0.1"><br><br>
+        
+        <label for="drought_index">Drought Index:</label>
+        <input type="number" id="drought_index" name="drought_index" step="0.1"><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
