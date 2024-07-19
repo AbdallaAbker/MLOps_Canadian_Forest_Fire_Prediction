@@ -7,7 +7,8 @@ WORKDIR /app
 # Copy the necessary directories into the container
 COPY ./artifacts/models/best_model.joblib ./artifacts/models/best_model.joblib
 COPY ./app.py ./app.py
-COPY ./templates ./templates 
+COPY ./templates ./templates
+COPY ./static ./static 
 COPY ./requirements.txt ./requirements.txt
 
 
