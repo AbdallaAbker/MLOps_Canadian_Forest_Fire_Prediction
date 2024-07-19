@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy container app to Azure Web App - fire-forest-streamlit-webapp
+name: Build and deploy container app to Azure Web App - fire-forest-webapp-mlops
 
 on:
   push:
@@ -19,18 +16,20 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Log in to registry
+    - name: Log in to Azure Container Registry
       uses: docker/login-action@v2
       with:
         registry: https://aabkeropscontainerregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_cea0eeaf89e247c1b2b8f941c2e5db1c }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a1f7c648a7ed43e8adc48a3e5ae0d2bb }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_577eebf5741941e0986f768420121ebc }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_871f0d1612c943099605e4d5124fcb2c }}
 
-    - name: Build and push container image to registry
+    - name: Build and push Streamlit image
       uses: docker/build-push-action@v3
       with:
+        context: .
+        file: Dockerfile.streamlit
         push: true
-        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cea0eeaf89e247c1b2b8f941c2e5db1c }}/fastapi:${{ github.sha }}
+        tags: aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_577eebf5741941e0986f768420121ebc }}/fastapi streamlit:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -41,11 +40,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'fire-forest-streamlit-webapp'
+        app-name: 'fire-forest-webapp-mlops'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a501ef4f30464867ab6aabb7d9367bcc }}
-        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cea0eeaf89e247c1b2b8f941c2e5db1c }}/fastapi:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_5574b1cd509b4baf99a619efa7d6e2ce }}
+        images: 'aabkeropscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_577eebf5741941e0986f768420121ebc }}/fastapi streamlit:${{ github.sha }}'
