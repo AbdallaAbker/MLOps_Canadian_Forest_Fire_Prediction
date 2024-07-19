@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import pandas as pd
 import joblib
@@ -19,6 +20,7 @@ except Exception as e:
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
@@ -53,10 +55,11 @@ async def predict(
             return {"error": "Model is not loaded"}
 
         prediction = model.predict(df)
-        return {"prediction": str(prediction[0])}
+        prediction_result = str(prediction[0])
+        return templates.TemplateResponse("index.html", {"request": request, "prediction": prediction_result})
     except Exception as e:
         logger.error(f"Error during prediction: {e}")
-        return {"error": "Prediction error"}
+        return templates.TemplateResponse("index.html", {"request": request, "error": "Prediction error"})
 
 if __name__ == "__main__":
     import uvicorn

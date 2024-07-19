@@ -1,36 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Forest Fire Prediction</title>
+    <title>Canadian Forest Fire Prediction with Machine Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('/static/forest-fire.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        label {
+            flex: 1;
+            margin-right: 10px;
+            color: black; /* Change label color to black */
+        }
+        input, select {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: black; /* Change input text color to black */
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 800px;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Forest Fire Prediction</h1>
+    <h1>Canadian Forest Fire Prediction with Machine Learning</h1>
     <form action="/predict" method="post">
-        <label for="province">Province:</label>
-        <input type="text" id="province" name="province"><br><br>
-        
-        <label for="vegetation_type">Vegetation Type:</label>
-        <input type="text" id="vegetation_type" name="vegetation_type"><br><br>
-        
-        <label for="fire_seasonality">Fire Seasonality:</label>
-        <input type="text" id="fire_seasonality" name="fire_seasonality"><br><br>
-        
-        <label for="land_use">Land Use:</label>
-        <input type="text" id="land_use" name="land_use"><br><br>
-        
-        <label for="temperature">Temperature:</label>
-        <input type="number" id="temperature" name="temperature" step="0.1"><br><br>
-        
-        <label for="oxygen">Oxygen:</label>
-        <input type="number" id="oxygen" name="oxygen" step="0.1"><br><br>
-        
-        <label for="humidity">Humidity:</label>
-        <input type="number" id="humidity" name="humidity" step="0.1"><br><br>
-        
-        <label for="drought_index">Drought Index:</label>
-        <input type="number" id="drought_index" name="drought_index" step="0.1"><br><br>
-        
+        <div class="form-group">
+            <label for="province">Province:</label>
+            <select id="province" name="province">
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Alberta">Alberta</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="Saskatchewan">Saskatchewan</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vegetation_type">Vegetation Type:</label>
+            <select id="vegetation_type" name="vegetation_type">
+                <option value="Grassland">Grassland</option>
+                <option value="Forest">Forest</option>
+                <option value="Wetland">Wetland</option>
+                <option value="Shrubland">Shrubland</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fire_seasonality">Fire Seasonality:</label>
+            <select id="fire_seasonality" name="fire_seasonality">
+                <option value="Fall">Fall</option>
+                <option value="Spring">Spring</option>
+                <option value="Winter">Winter</option>
+                <option value="Summer">Summer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="land_use">Land Use:</label>
+            <select id="land_use" name="land_use">
+                <option value="Industrial">Industrial</option>
+                <option value="Agricultural">Agricultural</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Residential">Residential</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" name="temperature" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="oxygen">Oxygen:</label>
+            <input type="number" id="oxygen" name="oxygen" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="humidity">Humidity:</label>
+            <input type="number" id="humidity" name="humidity" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="drought_index">Drought Index:</label>
+            <input type="number" id="drought_index" name="drought_index" step="0.1">
+        </div>
         <input type="submit" value="Predict">
     </form>
+    {% if prediction %}
+    <div class="prediction">
+        <h2>Prediction Result:</h2>
+        <p>The AI prediction is: {{ prediction }}</p>
+    </div>
+    {% endif %}
 </body>
 </html>
