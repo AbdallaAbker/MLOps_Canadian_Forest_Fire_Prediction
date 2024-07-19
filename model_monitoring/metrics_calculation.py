@@ -74,7 +74,7 @@ def load_preprocessing_params(preprocessing_params_file):
     return modes, medians, num_columns, cat_columns, target
 
 
-def features_fillna(df):
+def features_fillna(df, modes, medians):
     """Fill missing values using the same median and mode values"""
     for col in modes:
         df[col] = df[col].fillna(modes[col])
@@ -105,7 +105,9 @@ def calculate_metrics_postgresql(curr, i):
     current_data = raw_data.iloc[i : i + 1]
     # current_data = pd.DataFrame(current_data[num_features + cat_features])  #ensure incoming data is a dataframe
     # current_data.fillna(0, inplace=True)
-    current_data["Target"] = model.predict(current_data.apply(features_fillna))
+    current_data = features_fillna(current_data, modes, medians)
+    # current_data.drop("Target", axis=1, inplace=True)
+    current_data["Target"] = model.predict(current_data)
 
     report.run(
         reference_data=reference_data,

@@ -3,4 +3,4 @@
 Title: MLOps_Canadian_Forest_Fire_Prediction
 
 
-![alt text](<snapshots/project outlet.png>)
+![alt text](<snapshots/layout.png>)
