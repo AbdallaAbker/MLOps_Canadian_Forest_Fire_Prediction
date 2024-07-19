@@ -23,8 +23,8 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-mlflow.set_tracking_uri = "http://0.0.0.0:5000"
-mlflow.set_experiment = "baseline-model-01"
+mlflow.set_tracking_uri("http://0.0.0.0:5000/")
+mlflow.set_experiment = "workflow-orchestration-baseline-model-01"
 
 
 
@@ -42,12 +42,11 @@ def load_preprocessing_params(preprocessing_params_file: str):
 
     modes = preprocessing_params["modes"]
     medians = preprocessing_params["medians"]
-    map_target_column = preprocessing_params["map_target_column"]
     num_columns = preprocessing_params["num_columns"]
     cat_columns = preprocessing_params["cat_columns"]
     target = preprocessing_params["target_column"]
 
-    return modes, medians, map_target_column, num_columns, cat_columns, target
+    return modes, medians, num_columns, cat_columns, target
 
 
 def accuracy_measures(y_test, predictions, avg_method):
@@ -75,7 +74,7 @@ def run_expirement(dataset_path: str, model_pipeline_path: str):
         y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
 
         # baseline_model = load_model_pipeline(model_pipeline_path)
-        modes, medians, map_target_column, num_columns, cat_columns, target = (
+        modes, medians, num_columns, cat_columns, target = (
             load_preprocessing_params(preprocessing_params_file)
         )
 
@@ -126,7 +125,7 @@ def run_expirement(dataset_path: str, model_pipeline_path: str):
 if __name__ == "__main__":
 
     dataset_path = "../data/processed/"
-    model_pipeline_path = "../artiifacts/models/"
-    preprocessing_params_file = "../artiifacts/yaml/preprocessing-params.yaml"
+    model_pipeline_path = "../artifacts/models/"
+    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
 
     run_expirement(dataset_path, model_pipeline_path)
