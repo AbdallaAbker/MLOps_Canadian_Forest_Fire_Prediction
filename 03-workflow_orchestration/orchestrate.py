@@ -1,8 +1,6 @@
 import argparse
 import os
 
-import datetime
-
 import joblib
 import mlflow
 import pandas as pd
@@ -11,6 +9,8 @@ import pathlib
 from sklearn.compose import ColumnTransformer
 
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score
+
+from prefect import task, flow
 
 # Modelling
 from sklearn.linear_model import LogisticRegression
@@ -23,39 +23,19 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+remote_tracking_uri = "http://0.0.0.0:5000/"
+mlflow.set_tracking_uri(remote_tracking_uri)
+mlflow.set_experiment = "workflow-orchestration-baseline-model-01"
 
 
-mlflow.set_tracking_uri("http://0.0.0.0:5000/")
-# mlflow.set_tracking_uri("http://20.72.209.197:5000")
-# mlflow.set_tracking_uri("http://20.112.65.210:5000")
-
-datetime_meta = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-experiment_name = f"baseline-model-{datetime_meta}"
-if not mlflow.get_experiment_by_name(experiment_name):
-    experiment_id = mlflow.create_experiment(experiment_name)
-else:
-    experiment_id = mlflow.get_experiment_by_name(experiment_name).experiment_id
-
-mlflow.set_experiment(experiment_id=experiment_id)
-
-
-with open("../artifacts/yaml/preprocessing-params.yaml") as file:
-    preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
-    
-    preprocessing_params["experiment_id"] = experiment_id
-                 
-with open("../artifacts/yaml/preprocessing-params.yaml", "w") as file:
-    yaml.dump(preprocessing_params, file)
-    
-    
-
-def read_dataset(dataset_file_path):
+@task(name="Read_dataset", retries=5, retry_delay_seconds=5)
+def read_dataset(dataset_file_path: str):
     """Read dataset from the spicified location"""
     df = pd.read_csv(dataset_file_path)
     return df
 
-
-def load_preprocessing_params(preprocessing_params_file):
+@task(name="load_preprocessing_params")
+def load_preprocessing_params(preprocessing_params_file: str):
     """Load preprocessing parameters from yaml file in the artifacts folder"""
     with open(preprocessing_params_file) as file:
         preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
@@ -76,16 +56,16 @@ def accuracy_measures(y_test, predictions, avg_method):
     f1score = f1_score(y_test, predictions, average=avg_method)
     return accuracy, precision, recall, f1score
 
-
-def load_model_pipeline(model_pipeline_path):
+@task(name="load_model", retries=2, retry_delay_seconds=5)
+def load_model_pipeline(model_pipeline_path:str):
     """Load preprocessing pipleine and model"""
     baseline_model = joblib.load(
         os.path.join(model_pipeline_path, "baseline-model.joblib")
     )
 
+@flow(name="run_expirement", log_prints=True)
+def run_expirement(dataset_path: str, model_pipeline_path: str):
 
-def run_expirement(dataset_path, model_pipeline_path):
-    mlflow.autolog(True)
     with mlflow.start_run():
 
         X_train = read_dataset(os.path.join(dataset_path, "X_train.csv"))
@@ -94,7 +74,7 @@ def run_expirement(dataset_path, model_pipeline_path):
         y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
 
         # baseline_model = load_model_pipeline(model_pipeline_path)
-        modes, medians,  num_columns, cat_columns, target = (
+        modes, medians, num_columns, cat_columns, target = (
             load_preprocessing_params(preprocessing_params_file)
         )
 
@@ -113,12 +93,6 @@ def run_expirement(dataset_path, model_pipeline_path):
         )
 
         baseline_model.fit(X_train, y_train)
-
-        joblib.dump(
-            baseline_model, os.path.join(model_pipeline_path, "baseline-model.joblib")
-        )
-
-        mlflow.log_artifacts(model_pipeline_path, "baseline_model")
         y_pred = baseline_model.predict(X_test)
         
         accuracy, precision, recall, f1score = accuracy_measures(y_test, y_pred, 'macro')
@@ -132,6 +106,8 @@ def run_expirement(dataset_path, model_pipeline_path):
         Confusion_Matrix = confusion_matrix(y_pred, y_test)
         print("Confusion Matrix: \n", Confusion_Matrix)
         
+        
+        # pathlib.Path("model_pipeline_path").mkdir(exist_ok=True)
         joblib.dump(
             baseline_model, os.path.join(model_pipeline_path, "baseline-model.joblib")
         )
@@ -146,8 +122,8 @@ def run_expirement(dataset_path, model_pipeline_path):
 
 if __name__ == "__main__":
 
-    dataset_path = "../data/processed/"
+    dataset_path = "../artifacts/data/processed/"
     model_pipeline_path = "../artifacts/models/"
-    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
+    preprocessing_params_file = "../artifacts/configs/yaml/preprocessing-params.yaml"
 
     run_expirement(dataset_path, model_pipeline_path)

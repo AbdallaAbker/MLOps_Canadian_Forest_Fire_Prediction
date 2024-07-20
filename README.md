@@ -2,7 +2,12 @@
 
 Project: MLOps Zoomcamp - Canadian Forest Fire Prediction
 
+Project Overview:
 The task is to predict the risk of forest fires in various provinces of Canada based on environmental and geographical factors. The problem is a multi-class classification problem where the target variable has four categories: No Fire, Low Risk, Medium Risk, and High Risk. The goal is to develop a machine learning model that can accurately classify the fire risk level given the feature inputs.
+
+Project Use Case:
+- Resource allocation for firefighting efforts.
+- Implementing precautionary measures during high-risk periods.
 
 This project focuses less on experimentation and more on illustrating various tools and practices in MLOps.
 

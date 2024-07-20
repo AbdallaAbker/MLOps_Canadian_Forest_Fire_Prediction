@@ -1,0 +1,181 @@
+Province,Vegetation_Type,Fire_Seasonality,Land_Use,Temperature,Oxygen,Humidity,Drought_Index
+Newfoundland and Labrador,Forest,Fall,Agricultural,12.94,19.90336865,33.52953236,420.461325
+Saskatchewan,Forest,Summer,Agricultural,7.024423345,20.05889727,55.8172018,746.2683702
+Quebec,Forest,Fall,Industrial,11.6378315,19.99,70.22320853,4.498185111
+Prince Edward Island,Grassland,Fall,Agricultural,23.7454938,19.53606858,60.16354058,599.5750496
+New Brunswick,Forest,Winter,Residential,16.84532556,19.83621897,65.82834219,110.9839664
+Ontario,Shrubland,Fall,Commercial,28.28141861,19.43307159,80.20357772,309.3819424
+Newfoundland and Labrador,Wetland,Winter,Residential,24.15912816,19.81152739,27.46428216,394.28
+Ontario,Shrubland,Winter,Industrial,-8.961237645,20.39375762,42.72669455,408.2614693
+Ontario,Grassland,Summer,Industrial,-6.034685613,19.72906072,20.62903758,394.28
+Saskatchewan,Shrubland,Winter,Industrial,23.00200466,19.68399818,56.07,465.2441561
+Nova Scotia,Shrubland,Spring,Commercial,30.15840818,20.95309769,68.08279236,612.6547408
+Saskatchewan,Forest,Fall,Agricultural,13.33499329,19.76145481,86.68775083,500.6662675
+Nova Scotia,Wetland,Summer,Industrial,17.84210401,19.03663466,84.34153742,470.5436092
+British Columbia,Shrubland,Spring,Industrial,24.74197574,20.29996096,94.67748299,385.4373246
+Nova Scotia,Wetland,Summer,Industrial,26.26819432,19.64570986,19.14357616,232.1316951
+New Brunswick,Wetland,Fall,Residential,4.641870822,19.98846363,53.94304079,195.317818
+Manitoba,Forest,Spring,Commercial,-2.697872162,19.55747173,71.46044101,75.43096908
+Nova Scotia,Shrubland,Summer,Commercial,5.003618358,20.83381978,97.90153612,378.8999244
+Nova Scotia,Shrubland,Fall,Residential,32.39437976,19.99,71.13212407,175.7351195
+New Brunswick,Forest,Spring,Industrial,11.88037918,20.56392826,19.98874065,448.1913586
+Alberta,Shrubland,Fall,Commercial,6.844497734,19.99,32.48949836,610.5308965
+Nova Scotia,Forest,Spring,Commercial,27.47702504,20.66795038,57.91792328,174.7063345
+Manitoba,Grassland,Winter,Residential,32.09536871,19.10996286,28.02508181,270.7136848
+Alberta,Wetland,Summer,Agricultural,-1.892376462,20.62569167,94.37516625,282.8851364
+Ontario,Forest,Fall,Industrial,17.94350428,20.29111452,85.31976677,683.0001043
+Saskatchewan,Grassland,Spring,Commercial,10.31776935,19.59464504,70.65974706,394.28
+Nova Scotia,Wetland,Fall,Agricultural,32.7759674,20.93901421,30.6283563,504.5300284
+Saskatchewan,Forest,Winter,Commercial,-2.056371565,20.01768369,56.07,208.8209004
+Manitoba,Forest,Winter,Industrial,16.30406531,19.58155577,32.09068725,394.28
+Prince Edward Island,Forest,Summer,Commercial,15.91181308,19.41693141,45.25988546,304.3209056
+Ontario,Shrubland,Spring,Agricultural,17.99983875,20.0033887,96.45806012,25.28673638
+Saskatchewan,Forest,Fall,Industrial,3.106215475,20.04600392,97.42402581,213.368584
+Saskatchewan,Shrubland,Spring,Agricultural,34.68633117,19.538629,71.3681737,248.6868671
+Prince Edward Island,Wetland,Fall,Commercial,19.8221146,19.69507764,62.10125752,267.2154081
+Newfoundland and Labrador,Shrubland,Summer,Agricultural,28.57644113,20.48926129,70.48939957,192.6915403
+Saskatchewan,Grassland,Summer,Agricultural,12.94,20.97224821,56.07,394.28
+Saskatchewan,Forest,Spring,Agricultural,-5.963127338,19.1545697,56.07,92.44021801
+Manitoba,Grassland,Winter,Industrial,32.54162628,20.72522249,56.07,148.8528812
+Ontario,Wetland,Summer,Commercial,7.754313358,20.40976377,26.86936028,402.1166635
+Newfoundland and Labrador,Wetland,Spring,Commercial,-4.091650079,20.77527633,39.58757739,318.7283509
+Quebec,Forest,Winter,Commercial,31.21262374,20.58495974,18.99371436,290.0771272
+Prince Edward Island,Forest,Fall,Commercial,12.94,19.38258928,28.84549287,253.1093505
+Nova Scotia,Shrubland,Spring,Industrial,12.94,20.20497766,56.07,507.877526
+Nova Scotia,Grassland,Fall,Industrial,12.94,20.32696606,66.02932879,26.35553758
+Saskatchewan,Grassland,Winter,Industrial,-7.223418349,20.18095487,42.5911609,754.5692986
+British Columbia,Forest,Fall,Agricultural,12.94,20.2102171,64.96040337,71.84647357
+Manitoba,Grassland,Summer,Agricultural,-7.947737238,20.07550912,56.07,217.2445255
+New Brunswick,Shrubland,Spring,Agricultural,-8.693489043,19.11872816,61.92245614,730.8207862
+Prince Edward Island,Forest,Winter,Residential,12.94,19.87322543,56.07,696.8008734
+Quebec,Grassland,Spring,Commercial,33.32817408,19.99,27.70438464,550.7522119
+Nova Scotia,Forest,Summer,Industrial,32.2391652,19.06782376,56.07,427.2530407
+Alberta,Grassland,Fall,Industrial,6.265765097,19.86318307,49.62191927,131.7345043
+British Columbia,Shrubland,Spring,Industrial,32.99776184,20.74811565,82.3444723,686.2151692
+Saskatchewan,Shrubland,Spring,Industrial,34.35102142,19.75267039,56.07,394.28
+Manitoba,Wetland,Spring,Agricultural,11.33039604,19.11823206,98.34388851,630.9742373
+British Columbia,Shrubland,Winter,Industrial,12.94,20.95535724,98.75233105,451.7855178
+Saskatchewan,Shrubland,Summer,Agricultural,32.09555521,20.6223824,56.07,698.6760583
+Quebec,Forest,Summer,Industrial,-4.932492972,20.49356324,93.87669103,130.1937278
+Prince Edward Island,Wetland,Spring,Industrial,17.43002801,20.48085621,71.03103606,456.0247378
+British Columbia,Wetland,Summer,Residential,-3.517842548,19.02562002,11.7907941,592.5155124
+Nova Scotia,Shrubland,Fall,Industrial,21.38979269,20.35631316,36.88844176,643.1407593
+Quebec,Forest,Summer,Residential,8.094362398,19.73287316,81.31878571,39.72012461
+Ontario,Wetland,Summer,Industrial,31.72463264,19.85727379,57.42333493,514.871707
+British Columbia,Forest,Winter,Residential,18.01477942,19.21997482,73.26157661,412.6987128
+Quebec,Grassland,Summer,Commercial,18.93451677,20.23463613,74.66221871,424.3644442
+Alberta,Wetland,Summer,Agricultural,12.93979046,19.29728295,29.97804021,332.7833075
+Ontario,Wetland,Fall,Residential,16.9764971,20.40068392,34.11511003,159.3031098
+Newfoundland and Labrador,Forest,Spring,Commercial,12.94,19.6647708,34.36489405,394.28
+Ontario,Grassland,Spring,Commercial,25.477168,20.29539215,56.07,155.1266834
+Prince Edward Island,Wetland,Fall,Industrial,-2.14764668,19.99,68.92233317,580.4348361
+Nova Scotia,Grassland,Winter,Agricultural,18.15181401,19.7856264,39.14995144,655.566174
+Ontario,Wetland,Fall,Commercial,12.94,20.40247887,78.79051529,765.8661446
+New Brunswick,Wetland,Fall,Commercial,6.58985582,19.89356519,99.9864203,347.500645
+British Columbia,Grassland,Summer,Industrial,20.09362912,20.12184286,69.98781974,205.253958
+Newfoundland and Labrador,Forest,Winter,Industrial,22.54693292,19.95293115,41.18378886,541.092205
+Nova Scotia,Shrubland,Summer,Agricultural,-7.923567277,20.00448156,47.95446511,394.28
+Quebec,Wetland,Summer,Residential,3.730842385,20.92064921,30.5203944,364.6802674
+Prince Edward Island,Wetland,Summer,Industrial,25.46781103,20.09847638,56.07,648.6736865
+New Brunswick,Wetland,Spring,Residential,21.21713052,20.41681852,74.16023292,290.6420319
+Nova Scotia,Grassland,Winter,Commercial,-1.478092644,19.6748831,47.69428521,204.3290447
+Alberta,Grassland,Winter,Industrial,-9.285032941,19.50466914,74.14475387,513.5814544
+British Columbia,Forest,Winter,Residential,7.45833647,19.99,77.02894621,75.39947646
+Manitoba,Forest,Summer,Commercial,8.661811351,19.71487695,18.93117633,164.9360262
+Newfoundland and Labrador,Wetland,Spring,Residential,0.231890009,20.93593696,97.8027871,152.8916338
+British Columbia,Wetland,Winter,Residential,9.309688138,19.99,58.37845226,48.59575698
+Newfoundland and Labrador,Wetland,Fall,Commercial,12.74373863,20.91341873,60.37254997,184.0681491
+Saskatchewan,Forest,Summer,Residential,-7.57993558,20.33173524,24.50389692,37.95297735
+Newfoundland and Labrador,Grassland,Winter,Agricultural,2.786954674,20.01189559,80.48770062,125.3684765
+Alberta,Shrubland,Fall,Residential,6.901169069,19.08808152,27.25904098,732.4484449
+Manitoba,Shrubland,Fall,Industrial,-7.951628739,19.00287725,36.2464195,314.2428169
+Saskatchewan,Forest,Fall,Agricultural,12.23894433,19.99,24.24275983,97.27459259
+Ontario,Shrubland,Fall,Industrial,23.72304984,19.71622004,19.39457643,164.2217023
+Saskatchewan,Shrubland,Spring,Residential,6.795234409,20.10009931,61.63374509,738.6761444
+New Brunswick,Grassland,Spring,Industrial,1.091051293,19.54287877,69.53401065,394.28
+Saskatchewan,Wetland,Summer,Residential,14.62187361,20.82813675,11.67254543,523.2891143
+Quebec,Shrubland,Winter,Agricultural,19.28759674,19.99,30.73868254,239.2399607
+Saskatchewan,Grassland,Fall,Agricultural,4.356581171,20.03983632,64.8165065,298.6444574
+Alberta,Grassland,Spring,Agricultural,26.55690604,19.69499178,82.92082314,394.28
+Newfoundland and Labrador,Forest,Summer,Commercial,8.102868046,20.72362182,16.69265553,294.9488696
+Alberta,Forest,Fall,Commercial,29.0552827,19.47693659,69.20154023,6.165167329
+Alberta,Grassland,Summer,Commercial,25.05728638,19.85484863,90.11332623,394.28
+Newfoundland and Labrador,Grassland,Fall,Residential,-0.235934667,19.40018173,34.51686655,114.291747
+Quebec,Forest,Winter,Commercial,-6.956846075,19.99,33.45010185,475.4169646
+Saskatchewan,Wetland,Spring,Commercial,12.94,20.6793087,32.72129333,529.0416618
+New Brunswick,Grassland,Winter,Residential,18.68699807,20.43285094,85.19753185,294.7015943
+Alberta,Wetland,Winter,Industrial,17.30184463,20.99506597,56.07,614.9002903
+Saskatchewan,Wetland,Fall,Industrial,12.42514558,19.99,50.23394078,689.5910646
+Quebec,Forest,Winter,Industrial,-4.90352668,19.3496047,59.49822485,486.8716094
+Saskatchewan,Shrubland,Winter,Commercial,5.113641713,19.5878881,30.20694952,415.4329381
+Manitoba,Shrubland,Fall,Industrial,12.94,19.99,62.55699307,600.4021841
+Alberta,Forest,Spring,Residential,19.96312637,19.89484405,12.67929704,343.3543223
+Quebec,Shrubland,Fall,Industrial,10.23935249,19.46119092,84.37290336,7.495302151
+Saskatchewan,Shrubland,Winter,Residential,33.59170202,19.65488594,18.58403441,235.8863778
+Prince Edward Island,Shrubland,Winter,Agricultural,-5.020574444,19.38063925,40.08129837,138.6150877
+Manitoba,Grassland,Summer,Commercial,-7.389083755,20.87184401,40.44226376,655.9318504
+Newfoundland and Labrador,Wetland,Summer,Residential,21.03924642,19.5379428,76.50146446,124.3194917
+New Brunswick,Wetland,Fall,Agricultural,4.490777592,20.32047993,71.84837584,577.3451094
+New Brunswick,Shrubland,Fall,Industrial,-7.205305317,19.07280885,37.71465214,394.28
+British Columbia,Shrubland,Spring,Industrial,-7.596253487,20.44035018,72.06289583,317.0772042
+Newfoundland and Labrador,Grassland,Spring,Commercial,-3.535944549,19.76217025,57.66873122,363.2363639
+Nova Scotia,Grassland,Winter,Commercial,12.94,20.58403915,99.63560612,614.0662458
+Saskatchewan,Shrubland,Winter,Residential,26.1712351,20.48491148,88.9443305,394.28
+Saskatchewan,Grassland,Summer,Residential,23.55568207,19.10077773,35.33583081,711.2991645
+Nova Scotia,Shrubland,Fall,Agricultural,25.4194949,20.36539943,93.36745129,423.6590132
+New Brunswick,Grassland,Fall,Residential,-3.516919305,19.28227706,30.69651461,88.51016702
+British Columbia,Shrubland,Summer,Agricultural,12.94,20.98668765,96.28465857,445.746877
+Newfoundland and Labrador,Shrubland,Winter,Residential,12.94,19.24165128,20.29324379,82.21750919
+New Brunswick,Forest,Winter,Agricultural,30.33663453,19.70050831,56.07,25.13558397
+Saskatchewan,Shrubland,Spring,Agricultural,18.01958616,20.70173075,56.07,550.6363093
+Saskatchewan,Forest,Winter,Industrial,29.36353398,20.75425934,46.26686368,59.38922733
+Saskatchewan,Grassland,Spring,Agricultural,22.78950711,19.72890638,17.01808532,751.0078411
+New Brunswick,Grassland,Winter,Agricultural,6.150976273,19.79504864,77.59886165,345.412624
+Nova Scotia,Grassland,Winter,Commercial,32.02867188,19.85113847,18.12860354,415.4735223
+New Brunswick,Forest,Spring,Agricultural,14.16897404,20.67331879,94.29369954,40.36292256
+Manitoba,Grassland,Winter,Commercial,12.44480816,20.43083072,56.07,733.1191529
+New Brunswick,Shrubland,Summer,Commercial,-7.717600886,20.49310778,32.68364152,30.04523517
+New Brunswick,Shrubland,Winter,Residential,4.944380282,20.14930192,45.423513,394.28
+Nova Scotia,Wetland,Summer,Industrial,17.48568901,19.78052597,55.7098419,757.0181629
+British Columbia,Forest,Spring,Residential,33.2378583,19.55266347,74.62260389,326.5829668
+Newfoundland and Labrador,Grassland,Spring,Industrial,21.61657626,19.99,70.12305309,356.1049249
+Saskatchewan,Forest,Fall,Agricultural,0.240292972,20.66121409,65.85950736,657.9231132
+Alberta,Forest,Fall,Industrial,-4.316205044,20.60075868,89.42564167,651.9352792
+Ontario,Shrubland,Spring,Agricultural,-0.710738537,20.24415839,36.29170539,19.96083921
+Saskatchewan,Shrubland,Summer,Industrial,4.714993533,19.86834216,51.32481734,605.2511581
+Saskatchewan,Wetland,Fall,Agricultural,17.22876054,19.99,99.8250675,394.28
+Saskatchewan,Forest,Winter,Industrial,-4.026934167,19.12608336,39.98680767,329.5201361
+British Columbia,Wetland,Fall,Industrial,20.42516706,19.99,75.80069824,73.09307414
+Alberta,Shrubland,Spring,Commercial,6.482249815,20.18592632,74.68029573,759.9588896
+Nova Scotia,Forest,Fall,Commercial,33.44741176,20.53299029,97.89750781,434.5786882
+Quebec,Forest,Spring,Agricultural,33.99288996,19.99,85.24800975,21.68116785
+Ontario,Forest,Fall,Industrial,26.48005427,19.76594883,80.40571404,588.545619
+British Columbia,Wetland,Winter,Industrial,29.34333711,20.51974572,56.0368127,283.1328601
+Manitoba,Forest,Spring,Residential,15.93583423,19.61826728,53.12984556,394.28
+Prince Edward Island,Grassland,Fall,Commercial,12.94,19.99,79.87717121,237.7135316
+Alberta,Forest,Winter,Industrial,-7.503416495,19.98105643,40.92842805,299.3748996
+British Columbia,Wetland,Summer,Residential,13.11635353,19.99,60.39703248,601.5188554
+Saskatchewan,Forest,Fall,Residential,34.53922008,20.98266093,44.83783223,523.6363025
+Manitoba,Grassland,Spring,Industrial,25.37633643,19.99,24.98028856,45.31781931
+Alberta,Forest,Summer,Industrial,-6.140357462,20.64442828,57.86909858,93.87754203
+New Brunswick,Forest,Fall,Agricultural,9.947703689,19.80007055,17.28365463,394.28
+Saskatchewan,Shrubland,Fall,Commercial,-0.888037791,20.77947877,43.60003166,398.5155413
+Prince Edward Island,Grassland,Summer,Industrial,22.90377931,20.0712193,31.63891131,442.1874527
+British Columbia,Forest,Fall,Residential,2.570788141,20.58108406,83.8955569,489.350729
+Alberta,Forest,Winter,Residential,13.69884921,19.78424521,71.58724185,188.2925029
+Saskatchewan,Shrubland,Spring,Commercial,7.919223561,20.50687231,75.93156642,394.28
+Saskatchewan,Forest,Fall,Agricultural,32.34848265,19.99,37.36321168,284.105755
+Quebec,Shrubland,Fall,Residential,1.908734032,19.2565321,77.44348421,205.998231
+Prince Edward Island,Wetland,Summer,Industrial,9.080831586,19.88717454,36.75787894,704.4122899
+Prince Edward Island,Forest,Spring,Residential,12.94,19.08355211,17.6081044,431.4137511
+Quebec,Grassland,Spring,Industrial,27.28040898,19.99,12.56295154,678.2917017
+Quebec,Shrubland,Spring,Industrial,32.87363493,20.27331707,37.6443269,356.7482251
+Manitoba,Forest,Summer,Agricultural,24.27396231,19.39905754,22.53129004,624.0967216
+Nova Scotia,Grassland,Fall,Industrial,12.90313766,19.5205059,92.89498066,382.8765514
+Prince Edward Island,Grassland,Fall,Industrial,10.92664849,19.79753478,43.39610302,384.8544303
+Alberta,Wetland,Summer,Residential,20.90576966,19.99,56.28277229,74.32218059
+Manitoba,Forest,Winter,Residential,-6.492277449,20.00676281,67.96964048,99.42588666
+Alberta,Forest,Fall,Residential,12.94,20.31918062,59.03186918,138.4248345
+Manitoba,Grassland,Winter,Commercial,23.18999017,19.99,86.7178453,641.3877012
+Newfoundland and Labrador,Shrubland,Fall,Residential,4.950455922,20.74681732,95.40748115,755.5585301
+Alberta,Forest,Winter,Industrial,0.067087876,19.30827869,58.41002898,394.28

@@ -78,9 +78,9 @@ def main(raw_data_path, dest_path, param_path):
 
 if __name__ == "__main__":
     
-    dataset_file_path = "../data/raw/dataset.csv"
-    dest_folder_path = f"../data/processed/"
+    dataset_file_path = "../artifacts/data/raw/dataset.csv"
+    dest_folder_path = f"../artifacts/data/processed/"
     model_pipeline_path = "../artifacts/baseline-model.joblib"
-    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
+    preprocessing_params_file = "../artifacts/configs/yaml/preprocessing-params.yaml"
 
     main(dataset_file_path, dest_folder_path, preprocessing_params_file)

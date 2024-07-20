@@ -3,8 +3,8 @@
 ![alt text](../snapshots/expirement-tracking.png)
 
 
-- Activate environment source. e.g. for linux system run: ./mlvenv/bin/activate
-- Enter expirement tracking directory. for linux system run:  cd ./expirement_tracking_model_registry
+- Activate virtual environment source. e.g. for linux system run: ./mlvenv/bin/activate
+- Enter expirement tracking directory. for linux system run:  cd ./02-expirement_tracking_model_registry
 - Run python preprocessor.py
 - Set remote-tracking server IP address to Azure Virual Machine Server. e.g. remote-server-ip-adress= "http://XX.XX.XXX.197:5000"
 - On seperate terminal activate the mlvenv enviroment again

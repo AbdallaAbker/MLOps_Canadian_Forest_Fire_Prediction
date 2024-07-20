@@ -14,26 +14,16 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
-import datetime
-
-from sklearn.metrics import (
-    accuracy_score,
-    classification_report,
-    confusion_matrix,
-    f1_score,
-)
 
 
-mlflow.set_tracking_uri("http://0.0.0.0:5000/")
-
-datetime_meta = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-experiment_name = f"best-model-{datetime_meta}"
-if not mlflow.get_experiment_by_name(experiment_name):
-    experiment_id = mlflow.create_experiment(experiment_name)
-else:
-    experiment_id = mlflow.get_experiment_by_name(experiment_name).experiment_id
-
-mlflow.set_experiment(experiment_id=experiment_id)
+with open("../artifacts/configs/yaml/preprocessing-params.yaml") as file:
+    preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
+    
+experiment_id = preprocessing_params["experiment_id"]
+    
+remote_tracking_uri = "http://0.0.0.0:5000/"
+mlflow.set_tracking_uri(remote_tracking_uri)
+mlflow.set_experiment(experiment_id)
 
 
 def read_dataset(dataset_file_path):
@@ -64,33 +54,29 @@ def accuracy_measures(y_test, predictions, avg_method):
     return accuracy, precision, recall, f1score
 
 
-# def load_model_pipeline(model_pipeline_path):
-#     """Load preprocessing pipeline and model"""
-#     baseline_model = joblib.load(
-#         os.path.join(model_pipeline_path, "baseline-model.joblib")
-#     )
-
+def load_model_pipeline(model_pipeline_path):
+    """Load preprocessing pipeline and model"""
+    baseline_model = joblib.load(
+        os.path.join(model_pipeline_path, "baseline-model.joblib")
+    )
 
 
 def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
     best_accuracy = 0
     best_model = None
     best_model_name = None
-    
-    #set autlog true to capture as much of possible logs
-    mlflow.autolog(False)
 
-    with mlflow.start_run(nested=True):
+    with mlflow.start_run():
         X_train = read_dataset(os.path.join(dataset_path, "X_train.csv"))
         y_train = read_dataset(os.path.join(dataset_path, "y_train.csv"))
         X_test = read_dataset(os.path.join(dataset_path, "X_test.csv"))
         y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
 
-        #retrieve reprprocessing params
         modes, medians, num_columns, cat_columns, target = load_preprocessing_params(preprocessing_params_file)
 
         numeric_transformer = StandardScaler()
         oh_transformer = OneHotEncoder()
+
         preprocessor = ColumnTransformer(
             [
                 ("OneHotEncoder", oh_transformer, cat_columns),
@@ -100,7 +86,6 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
 
         with open(hyperparams_file) as file:
             hyperparams = yaml.load(file, Loader=yaml.FullLoader)
-
 
         for model_name, params in hyperparams['models'].items():
             print(f"Running experiment for {model_name} with parameters: {params}")
@@ -145,27 +130,48 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
                     best_accuracy = accuracy
                     best_model = pipeline
                     best_model_name = f"{model_name}_model_{i}"
-                    
-        preprocessing_params = {
-        "num_columns": num_columns,
-        "target_column": "Target",
-        'modes': modes,
-        'medians': medians,
-        "experiment_id": experiment_id
-    }
-    #update yaml param with new param best model pipeline
-    with open(preprocessing_params_file, "w") as file:
-        yaml.dump(preprocessing_params, file)               
 
     return best_model, best_model_name, best_accuracy
 
 
+def register_model(best_model, best_model_name, best_accuracy, model_pipeline_path):
+    client = mlflow.tracking.MlflowClient()
+    # experiment_id = client.get_experiment_by_name("baseline-model-01").experiment_id
+    runs = client.search_runs(experiment_id, order_by=["metrics.accuracy DESC"])
+
+    if len(runs) > 0:
+        production_run = runs[0]
+        production_accuracy = production_run.data.metrics["accuracy"]
+
+        if best_accuracy > production_accuracy:
+            print(f"New model {best_model_name} with accuracy {best_accuracy} is better than production model with accuracy {production_accuracy}. Promoting new model.")
+            joblib.dump(best_model, os.path.join(model_pipeline_path, "best_model.joblib"))
+            mlflow.register_model(f"runs:/{production_run.info.run_id}/model", "ProductionModel")
+            latest_mv = client.get_latest_versions("ProductionModel")[0]
+            # client.set_registered_model_alias(model_name= "ProductionModel", latest_mv.version)
+            client.transition_model_version_stage(
+                name="ProductionModel",
+                version=latest_mv.version,
+                stage="Archived"
+            )
+        else:
+            print(f"New model {best_model_name} with accuracy {best_accuracy} is not better than production model with accuracy {production_accuracy}.")
+    else:
+        print(f"No production model found. Registering {best_model_name} as the first production model.")
+        joblib.dump(best_model, os.path.join(model_pipeline_path, "best_model.joblib"))
+        mlflow.register_model(f"runs:/{best_model_name}/model", "ProductionModel")
+        client.transition_model_version_stage(
+            name="ProductionModel",
+            version=1,
+            stage="Production"
+        )
+
 
 if __name__ == "__main__":
-
-    dataset_path = "../data/processed/"
+    dataset_path = "../artifacts/data/processed/"
     model_pipeline_path = "../artifacts/models/"
-    preprocessing_params_file = "../artifacts/yaml/preprocessing-params.yaml"
-    hyperparams_file = "../artifacts/yaml/hyperparams.yaml"
+    preprocessing_params_file = "../artifacts/configs/yaml/preprocessing-params.yaml"
+    hyperparams_file = "../artifacts/configs/yaml/hyperparams.yaml"
 
-    run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file)
+    best_model, best_model_name, best_accuracy = run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file)
+    register_model(best_model, best_model_name, best_accuracy, model_pipeline_path)

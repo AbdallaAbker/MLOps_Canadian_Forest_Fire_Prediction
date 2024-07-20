@@ -1,0 +1,23 @@
+experiment_id: '3'
+cat_columns:
+- Province
+- Vegetation_Type
+- Fire_Seasonality
+- Land_Use
+medians:
+  Drought_Index: 394.28
+  Humidity: 56.07
+  Oxygen: 19.99
+  Temperature: 12.94
+modes:
+  Fire_Seasonality: Fall
+  Land_Use: Industrial
+  Province: Saskatchewan
+  Vegetation_Type: Forest
+num_columns:
+- Temperature
+- Oxygen
+- Humidity
+- Drought_Index
+target_column: Target
+

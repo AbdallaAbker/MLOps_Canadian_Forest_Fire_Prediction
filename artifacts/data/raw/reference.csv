@@ -1,0 +1,181 @@
+,Province,Temperature,Oxygen,Humidity,Vegetation_Type,Drought_Index,Fire_Seasonality,Land_Use,Target
+70,Newfoundland and Labrador,,19.90336865,33.52953236,Forest,420.461325,Fall,Agricultural,Low Risk
+827,,7.024423345,20.05889727,55.8172018,Forest,746.2683702,Summer,Agricultural,No Fire
+231,Quebec,11.6378315,,70.22320853,Forest,4.498185111,Fall,Industrial,No Fire
+588,Prince Edward Island,23.7454938,19.53606858,60.16354058,Grassland,599.5750496,Fall,Agricultural,Medium Risk
+39,New Brunswick,16.84532556,19.83621897,65.82834219,Forest,110.9839664,Winter,Residential,Medium Risk
+731,Ontario,28.28141861,19.43307159,80.20357772,Shrubland,309.3819424,Fall,Commercial,High Risk
+299,Newfoundland and Labrador,24.15912816,19.81152739,27.46428216,Wetland,,Winter,Residential,Low Risk
+110,Ontario,-8.961237645,20.39375762,42.72669455,Shrubland,408.2614693,Winter,,Low Risk
+72,Ontario,-6.034685613,19.72906072,20.62903758,Grassland,,Summer,Industrial,High Risk
+86,Saskatchewan,23.00200466,19.68399818,,Shrubland,465.2441561,Winter,Industrial,No Fire
+139,Nova Scotia,30.15840818,20.95309769,68.08279236,Shrubland,612.6547408,Spring,Commercial,No Fire
+533,Saskatchewan,13.33499329,19.76145481,86.68775083,,500.6662675,Fall,Agricultural,High Risk
+801,Nova Scotia,17.84210401,19.03663466,84.34153742,Wetland,470.5436092,Summer,Industrial,No Fire
+120,British Columbia,24.74197574,20.29996096,94.67748299,Shrubland,385.4373246,Spring,Industrial,High Risk
+711,Nova Scotia,26.26819432,19.64570986,19.14357616,Wetland,232.1316951,Summer,Industrial,Low Risk
+590,New Brunswick,4.641870822,19.98846363,53.94304079,Wetland,195.317818,Fall,Residential,No Fire
+168,Manitoba,-2.697872162,19.55747173,71.46044101,Forest,75.43096908,Spring,Commercial,No Fire
+422,Nova Scotia,5.003618358,20.83381978,97.90153612,Shrubland,378.8999244,Summer,Commercial,Low Risk
+447,Nova Scotia,32.39437976,,71.13212407,Shrubland,175.7351195,,Residential,Low Risk
+67,New Brunswick,11.88037918,20.56392826,19.98874065,Forest,448.1913586,Spring,,No Fire
+211,Alberta,6.844497734,,32.48949836,Shrubland,610.5308965,Fall,Commercial,No Fire
+741,Nova Scotia,27.47702504,20.66795038,57.91792328,Forest,174.7063345,Spring,Commercial,No Fire
+688,Manitoba,32.09536871,19.10996286,28.02508181,Grassland,270.7136848,Winter,Residential,No Fire
+333,Alberta,-1.892376462,20.62569167,94.37516625,Wetland,282.8851364,Summer,Agricultural,Low Risk
+542,Ontario,17.94350428,20.29111452,85.31976677,Forest,683.0001043,Fall,Industrial,High Risk
+344,Saskatchewan,10.31776935,19.59464504,70.65974706,Grassland,,Spring,Commercial,Low Risk
+30,Nova Scotia,32.7759674,20.93901421,30.6283563,Wetland,504.5300284,Fall,Agricultural,Low Risk
+837,Saskatchewan,-2.056371565,20.01768369,,,208.8209004,Winter,Commercial,Medium Risk
+658,Manitoba,16.30406531,19.58155577,32.09068725,,,Winter,Industrial,Medium Risk
+522,Prince Edward Island,15.91181308,19.41693141,45.25988546,Forest,304.3209056,Summer,Commercial,No Fire
+260,Ontario,17.99983875,20.0033887,96.45806012,Shrubland,25.28673638,Spring,Agricultural,Medium Risk
+756,,3.106215475,20.04600392,97.42402581,,213.368584,Fall,Industrial,Medium Risk
+298,Saskatchewan,34.68633117,19.538629,71.3681737,Shrubland,248.6868671,Spring,Agricultural,No Fire
+531,Prince Edward Island,19.8221146,19.69507764,62.10125752,Wetland,267.2154081,Fall,Commercial,Medium Risk
+615,Newfoundland and Labrador,28.57644113,20.48926129,70.48939957,Shrubland,192.6915403,Summer,Agricultural,High Risk
+675,,,20.97224821,,Grassland,,Summer,Agricultural,Medium Risk
+23,,-5.963127338,19.1545697,,Forest,92.44021801,Spring,Agricultural,Low Risk
+589,Manitoba,32.54162628,20.72522249,,Grassland,148.8528812,Winter,Industrial,No Fire
+431,Ontario,7.754313358,20.40976377,26.86936028,Wetland,402.1166635,Summer,Commercial,No Fire
+209,Newfoundland and Labrador,-4.091650079,20.77527633,39.58757739,Wetland,318.7283509,Spring,Commercial,No Fire
+63,Quebec,31.21262374,20.58495974,18.99371436,,290.0771272,Winter,Commercial,Medium Risk
+239,Prince Edward Island,,19.38258928,28.84549287,,253.1093505,Fall,Commercial,Low Risk
+370,Nova Scotia,,20.20497766,,Shrubland,507.877526,Spring,,High Risk
+744,Nova Scotia,,20.32696606,66.02932879,Grassland,26.35553758,Fall,,No Fire
+652,,-7.223418349,20.18095487,42.5911609,Grassland,754.5692986,Winter,,Low Risk
+625,British Columbia,,20.2102171,64.96040337,Forest,71.84647357,Fall,Agricultural,Low Risk
+215,Manitoba,-7.947737238,20.07550912,,Grassland,217.2445255,Summer,Agricultural,Low Risk
+519,New Brunswick,-8.693489043,19.11872816,61.92245614,Shrubland,730.8207862,Spring,Agricultural,No Fire
+494,Prince Edward Island,,19.87322543,,Forest,696.8008734,Winter,Residential,No Fire
+832,Quebec,33.32817408,,27.70438464,Grassland,550.7522119,Spring,Commercial,No Fire
+453,Nova Scotia,32.2391652,19.06782376,,Forest,427.2530407,Summer,,No Fire
+352,Alberta,6.265765097,19.86318307,49.62191927,Grassland,131.7345043,,Industrial,No Fire
+549,British Columbia,32.99776184,20.74811565,82.3444723,Shrubland,686.2151692,Spring,Industrial,No Fire
+280,Saskatchewan,34.35102142,19.75267039,,Shrubland,,Spring,,Medium Risk
+247,Manitoba,11.33039604,19.11823206,98.34388851,Wetland,630.9742373,Spring,Agricultural,Medium Risk
+213,British Columbia,,20.95535724,98.75233105,Shrubland,451.7855178,Winter,Industrial,Medium Risk
+137,Saskatchewan,32.09555521,20.6223824,,Shrubland,698.6760583,Summer,Agricultural,No Fire
+396,Quebec,-4.932492972,20.49356324,93.87669103,Forest,130.1937278,Summer,Industrial,No Fire
+302,Prince Edward Island,17.43002801,20.48085621,71.03103606,Wetland,456.0247378,Spring,Industrial,Low Risk
+543,British Columbia,-3.517842548,19.02562002,11.7907941,Wetland,592.5155124,Summer,Residential,No Fire
+44,Nova Scotia,21.38979269,20.35631316,36.88844176,Shrubland,643.1407593,,Industrial,High Risk
+390,Quebec,8.094362398,19.73287316,81.31878571,,39.72012461,Summer,Residential,No Fire
+739,Ontario,31.72463264,19.85727379,57.42333493,Wetland,514.871707,Summer,Industrial,No Fire
+448,British Columbia,18.01477942,19.21997482,73.26157661,Forest,412.6987128,Winter,Residential,Medium Risk
+208,Quebec,18.93451677,20.23463613,74.66221871,Grassland,424.3644442,Summer,Commercial,No Fire
+198,Alberta,12.93979046,19.29728295,29.97804021,Wetland,332.7833075,Summer,Agricultural,No Fire
+668,Ontario,16.9764971,20.40068392,34.11511003,Wetland,159.3031098,,Residential,Medium Risk
+516,Newfoundland and Labrador,,19.6647708,34.36489405,Forest,,Spring,Commercial,High Risk
+328,Ontario,25.477168,20.29539215,,Grassland,155.1266834,Spring,Commercial,Low Risk
+449,Prince Edward Island,-2.14764668,,68.92233317,Wetland,580.4348361,Fall,Industrial,No Fire
+626,Nova Scotia,18.15181401,19.7856264,39.14995144,Grassland,655.566174,Winter,Agricultural,No Fire
+583,Ontario,,20.40247887,78.79051529,Wetland,765.8661446,,Commercial,Medium Risk
+826,New Brunswick,6.58985582,19.89356519,99.9864203,Wetland,347.500645,Fall,Commercial,Low Risk
+314,British Columbia,20.09362912,20.12184286,69.98781974,Grassland,205.253958,Summer,Industrial,No Fire
+136,Newfoundland and Labrador,22.54693292,19.95293115,41.18378886,,541.092205,Winter,Industrial,Medium Risk
+843,Nova Scotia,-7.923567277,20.00448156,47.95446511,Shrubland,,Summer,Agricultural,No Fire
+361,Quebec,3.730842385,20.92064921,30.5203944,Wetland,364.6802674,Summer,Residential,No Fire
+493,Prince Edward Island,25.46781103,20.09847638,,Wetland,648.6736865,Summer,Industrial,No Fire
+60,New Brunswick,21.21713052,20.41681852,74.16023292,Wetland,290.6420319,Spring,Residential,No Fire
+664,Nova Scotia,-1.478092644,19.6748831,47.69428521,Grassland,204.3290447,Winter,Commercial,Low Risk
+525,Alberta,-9.285032941,19.50466914,74.14475387,Grassland,513.5814544,Winter,Industrial,No Fire
+174,British Columbia,7.45833647,,77.02894621,Forest,75.39947646,Winter,Residential,No Fire
+536,Manitoba,8.661811351,19.71487695,18.93117633,Forest,164.9360262,Summer,Commercial,No Fire
+66,Newfoundland and Labrador,0.231890009,20.93593696,97.8027871,Wetland,152.8916338,Spring,Residential,No Fire
+820,British Columbia,9.309688138,,58.37845226,Wetland,48.59575698,Winter,Residential,No Fire
+777,Newfoundland and Labrador,12.74373863,20.91341873,60.37254997,Wetland,184.0681491,Fall,Commercial,High Risk
+381,Saskatchewan,-7.57993558,20.33173524,24.50389692,,37.95297735,Summer,Residential,Low Risk
+485,Newfoundland and Labrador,2.786954674,20.01189559,80.48770062,Grassland,125.3684765,Winter,Agricultural,No Fire
+218,Alberta,6.901169069,19.08808152,27.25904098,Shrubland,732.4484449,Fall,Residential,No Fire
+575,Manitoba,-7.951628739,19.00287725,36.2464195,Shrubland,314.2428169,Fall,Industrial,Medium Risk
+346,Saskatchewan,12.23894433,,24.24275983,,97.27459259,,Agricultural,Medium Risk
+545,Ontario,23.72304984,19.71622004,19.39457643,Shrubland,164.2217023,Fall,Industrial,No Fire
+800,,6.795234409,20.10009931,61.63374509,Shrubland,738.6761444,Spring,Residential,Low Risk
+809,New Brunswick,1.091051293,19.54287877,69.53401065,Grassland,,Spring,,No Fire
+778,,14.62187361,20.82813675,11.67254543,Wetland,523.2891143,Summer,Residential,No Fire
+398,Quebec,19.28759674,,30.73868254,Shrubland,239.2399607,Winter,Agricultural,Medium Risk
+76,Saskatchewan,4.356581171,20.03983632,64.8165065,Grassland,298.6444574,Fall,Agricultural,Low Risk
+196,Alberta,26.55690604,19.69499178,82.92082314,Grassland,,Spring,Agricultural,Medium Risk
+631,Newfoundland and Labrador,8.102868046,20.72362182,16.69265553,,294.9488696,Summer,Commercial,High Risk
+751,Alberta,29.0552827,19.47693659,69.20154023,Forest,6.165167329,,Commercial,No Fire
+570,Alberta,25.05728638,19.85484863,90.11332623,Grassland,,Summer,Commercial,Medium Risk
+405,Newfoundland and Labrador,-0.235934667,19.40018173,34.51686655,Grassland,114.291747,,Residential,High Risk
+512,Quebec,-6.956846075,,33.45010185,,475.4169646,Winter,Commercial,Medium Risk
+338,,,20.6793087,32.72129333,Wetland,529.0416618,Spring,Commercial,No Fire
+895,New Brunswick,18.68699807,20.43285094,85.19753185,Grassland,294.7015943,Winter,Residential,Medium Risk
+227,Alberta,17.30184463,20.99506597,,Wetland,614.9002903,Winter,Industrial,No Fire
+669,Saskatchewan,12.42514558,,50.23394078,Wetland,689.5910646,Fall,Industrial,High Risk
+204,Quebec,-4.90352668,19.3496047,59.49822485,Forest,486.8716094,Winter,Industrial,Low Risk
+745,Saskatchewan,5.113641713,19.5878881,30.20694952,Shrubland,415.4329381,Winter,Commercial,Low Risk
+192,Manitoba,,,62.55699307,Shrubland,600.4021841,Fall,Industrial,Low Risk
+874,Alberta,19.96312637,19.89484405,12.67929704,Forest,343.3543223,Spring,Residential,Low Risk
+794,Quebec,10.23935249,19.46119092,84.37290336,Shrubland,7.495302151,,Industrial,Low Risk
+774,Saskatchewan,33.59170202,19.65488594,18.58403441,Shrubland,235.8863778,Winter,Residential,High Risk
+481,Prince Edward Island,-5.020574444,19.38063925,40.08129837,Shrubland,138.6150877,Winter,Agricultural,Medium Risk
+834,Manitoba,-7.389083755,20.87184401,40.44226376,Grassland,655.9318504,Summer,Commercial,Low Risk
+465,Newfoundland and Labrador,21.03924642,19.5379428,76.50146446,Wetland,124.3194917,Summer,Residential,Low Risk
+807,New Brunswick,4.490777592,20.32047993,71.84837584,Wetland,577.3451094,Fall,Agricultural,No Fire
+885,New Brunswick,-7.205305317,19.07280885,37.71465214,Shrubland,,Fall,Industrial,No Fire
+96,British Columbia,-7.596253487,20.44035018,72.06289583,Shrubland,317.0772042,Spring,Industrial,Low Risk
+891,Newfoundland and Labrador,-3.535944549,19.76217025,57.66873122,Grassland,363.2363639,Spring,Commercial,No Fire
+326,Nova Scotia,,20.58403915,99.63560612,Grassland,614.0662458,Winter,Commercial,Low Risk
+294,,26.1712351,20.48491148,88.9443305,Shrubland,,Winter,Residential,Low Risk
+210,,23.55568207,19.10077773,35.33583081,Grassland,711.2991645,Summer,Residential,High Risk
+440,Nova Scotia,25.4194949,20.36539943,93.36745129,Shrubland,423.6590132,Fall,Agricultural,No Fire
+783,New Brunswick,-3.516919305,19.28227706,30.69651461,Grassland,88.51016702,,Residential,No Fire
+78,British Columbia,,20.98668765,96.28465857,Shrubland,445.746877,Summer,Agricultural,Low Risk
+265,Newfoundland and Labrador,,19.24165128,20.29324379,Shrubland,82.21750919,Winter,Residential,Low Risk
+829,New Brunswick,30.33663453,19.70050831,,Forest,25.13558397,Winter,Agricultural,No Fire
+428,Saskatchewan,18.01958616,20.70173075,,Shrubland,550.6363093,Spring,Agricultural,No Fire
+141,Saskatchewan,29.36353398,20.75425934,46.26686368,,59.38922733,Winter,,Medium Risk
+582,,22.78950711,19.72890638,17.01808532,Grassland,751.0078411,Spring,Agricultural,No Fire
+743,New Brunswick,6.150976273,19.79504864,77.59886165,Grassland,345.412624,Winter,Agricultural,Medium Risk
+363,Nova Scotia,32.02867188,19.85113847,18.12860354,Grassland,415.4735223,Winter,Commercial,No Fire
+65,New Brunswick,14.16897404,20.67331879,94.29369954,Forest,40.36292256,Spring,Agricultural,No Fire
+789,Manitoba,12.44480816,20.43083072,,Grassland,733.1191529,Winter,Commercial,No Fire
+291,New Brunswick,-7.717600886,20.49310778,32.68364152,Shrubland,30.04523517,Summer,Commercial,No Fire
+603,New Brunswick,4.944380282,20.14930192,45.423513,Shrubland,,Winter,Residential,Low Risk
+857,Nova Scotia,17.48568901,19.78052597,55.7098419,Wetland,757.0181629,Summer,Industrial,No Fire
+486,British Columbia,33.2378583,19.55266347,74.62260389,Forest,326.5829668,Spring,Residential,Medium Risk
+235,Newfoundland and Labrador,21.61657626,,70.12305309,Grassland,356.1049249,Spring,Industrial,Low Risk
+250,,0.240292972,20.66121409,65.85950736,,657.9231132,Fall,Agricultural,Low Risk
+49,Alberta,-4.316205044,20.60075868,89.42564167,Forest,651.9352792,Fall,Industrial,Low Risk
+657,Ontario,-0.710738537,20.24415839,36.29170539,Shrubland,19.96083921,Spring,Agricultural,Low Risk
+309,Saskatchewan,4.714993533,19.86834216,51.32481734,Shrubland,605.2511581,Summer,,Medium Risk
+709,,17.22876054,,99.8250675,Wetland,,Fall,Agricultural,High Risk
+275,,-4.026934167,19.12608336,39.98680767,Forest,329.5201361,Winter,,High Risk
+894,British Columbia,20.42516706,,75.80069824,Wetland,73.09307414,,Industrial,No Fire
+165,Alberta,6.482249815,20.18592632,74.68029573,Shrubland,759.9588896,Spring,Commercial,High Risk
+513,Nova Scotia,33.44741176,20.53299029,97.89750781,,434.5786882,Fall,Commercial,No Fire
+33,Quebec,33.99288996,,85.24800975,Forest,21.68116785,Spring,Agricultural,High Risk
+31,Ontario,26.48005427,19.76594883,80.40571404,Forest,588.545619,Fall,Industrial,No Fire
+673,British Columbia,29.34333711,20.51974572,56.0368127,Wetland,283.1328601,Winter,,Medium Risk
+404,Manitoba,15.93583423,19.61826728,53.12984556,Forest,,Spring,Residential,Medium Risk
+518,Prince Edward Island,,,79.87717121,Grassland,237.7135316,Fall,Commercial,No Fire
+430,Alberta,-7.503416495,19.98105643,40.92842805,Forest,299.3748996,Winter,,No Fire
+109,British Columbia,13.11635353,,60.39703248,Wetland,601.5188554,Summer,Residential,Low Risk
+77,Saskatchewan,34.53922008,20.98266093,44.83783223,Forest,523.6363025,Fall,Residential,High Risk
+412,Manitoba,25.37633643,,24.98028856,Grassland,45.31781931,Spring,Industrial,Medium Risk
+312,Alberta,-6.140357462,20.64442828,57.86909858,Forest,93.87754203,Summer,Industrial,Low Risk
+82,New Brunswick,9.947703689,19.80007055,17.28365463,,,Fall,Agricultural,High Risk
+321,,-0.888037791,20.77947877,43.60003166,Shrubland,398.5155413,Fall,Commercial,Medium Risk
+649,Prince Edward Island,22.90377931,20.0712193,31.63891131,Grassland,442.1874527,Summer,Industrial,High Risk
+693,British Columbia,2.570788141,20.58108406,83.8955569,Forest,489.350729,Fall,Residential,Low Risk
+360,Alberta,13.69884921,19.78424521,71.58724185,Forest,188.2925029,Winter,Residential,No Fire
+487,,7.919223561,20.50687231,75.93156642,Shrubland,,Spring,Commercial,Medium Risk
+464,,32.34848265,,37.36321168,,284.105755,Fall,Agricultural,Medium Risk
+5,Quebec,1.908734032,19.2565321,77.44348421,Shrubland,205.998231,Fall,Residential,High Risk
+54,Prince Edward Island,9.080831586,19.88717454,36.75787894,Wetland,704.4122899,Summer,Industrial,No Fire
+734,Prince Edward Island,,19.08355211,17.6081044,Forest,431.4137511,Spring,Residential,Low Risk
+462,Quebec,27.28040898,,12.56295154,Grassland,678.2917017,Spring,,High Risk
+323,Quebec,32.87363493,20.27331707,37.6443269,Shrubland,356.7482251,Spring,,Low Risk
+367,Manitoba,24.27396231,19.39905754,22.53129004,Forest,624.0967216,Summer,Agricultural,Medium Risk
+97,Nova Scotia,12.90313766,19.5205059,92.89498066,Grassland,382.8765514,Fall,Industrial,No Fire
+444,Prince Edward Island,10.92664849,19.79753478,43.39610302,Grassland,384.8544303,Fall,Industrial,Low Risk
+576,Alberta,20.90576966,,56.28277229,Wetland,74.32218059,Summer,Residential,Medium Risk
+897,Manitoba,-6.492277449,20.00676281,67.96964048,Forest,99.42588666,Winter,Residential,Low Risk
+578,Alberta,,20.31918062,59.03186918,Forest,138.4248345,Fall,Residential,No Fire
+779,Manitoba,23.18999017,,86.7178453,Grassland,641.3877012,Winter,Commercial,Medium Risk
+25,Newfoundland and Labrador,4.950455922,20.74681732,95.40748115,Shrubland,755.5585301,,Residential,Medium Risk
+84,Alberta,0.067087876,19.30827869,58.41002898,Forest,,Winter,Industrial,No Fire
