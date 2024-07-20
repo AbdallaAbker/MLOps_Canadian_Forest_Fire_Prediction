@@ -24,7 +24,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-remote_tracking_uri = "http://0.0.0.0:5000/"
+azure_remote_server_ip_adress= None # Paste Your Remote server Public IP Adress, e.g. "http://XX.XX.XXX.XXX:5000"
+if not azure_remote_server_ip_adress:
+    remote_tracking_uri = "http://0.0.0.0:5000/"  # Run locally If you dont provide the VM remote server public IP address
+else:
+    remote_tracking_uri = azure_remote_server_ip_adress
 mlflow.set_tracking_uri(remote_tracking_uri)
 datetime_meta = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 experiment_name = f"baseline-model-{datetime_meta}"

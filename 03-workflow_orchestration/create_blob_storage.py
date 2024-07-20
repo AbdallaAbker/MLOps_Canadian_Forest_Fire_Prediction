@@ -6,8 +6,6 @@ from prefect_azure.blob_storage import blob_storage_download
 
 
 
-os.environ[""] = os.get
-
 @flow
 def dataset_blob_storage_download_flow():
     connection_string = "connection_string"

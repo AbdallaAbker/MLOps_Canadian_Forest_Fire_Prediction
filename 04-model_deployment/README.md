@@ -1,8 +1,11 @@
-## Section 4: Welcome to the Model Deployment :smiley:
-![alt text](../snapshots/website.png)
+## Section 4: Welcome to the Model Deployment :smiley:  
+
+### WepApp deployed on Azure Cloud. website: fire-forest-webapp.azurewebsites.net
+
+![alt text](<../artifacts/images/website.png>)
 
 
-![alt text](../snapshots/cicd.png)
+![alt text](<../artifacts/images/cicd.png>)
 
 The model has been deployed on Azure Wepp service utilizing the CICD pipline with github actions 
 
@@ -22,7 +25,8 @@ To run the model on Azure Cloud:
 
 To run the model locally:
 - open a new terminal and activate virtul enviorment
-- locate terminal directory to: dc ./model_deployment
-- run fast api server by running: python main.py
-- verify the server is working by running: python score.py and recieves score 
+- locate terminal directory to: cd ./04-model_deployment
+- run fast api server by running: 04.1-python main.py
+- verify the server is working by running: python 04.2-score.py
+- Check the model predictions
 

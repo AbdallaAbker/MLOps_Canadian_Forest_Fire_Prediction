@@ -41,4 +41,4 @@ Main Directories:
 - model_deployment
 - monitoring
 
-![alt text](<snapshots/layout.png>)
+![alt text](<artifacts/images/layout.png>)

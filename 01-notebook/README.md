@@ -53,6 +53,6 @@ A guide to run the two jupyter notebooks:
     - Create ML Pipeline for downstream usage
 
 
-![alt text](../snapshots/pairplot.png)
+![alt text](<../artifacts/images/pairplot.png>)
 
-![alt text](../snapshots/scikit-learn-Pipeline.png)
+![alt text](<..//artifacts/images/scikit-learn-Pipeline.png>)

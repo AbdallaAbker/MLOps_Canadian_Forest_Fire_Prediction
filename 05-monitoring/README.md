@@ -1,6 +1,6 @@
 ## Section 4: Welcome to the Workflow Orchestration :smiley:
 
-![alt text](../snapshots/eveidently.png)
+![alt text](<../artifacts/images/eveidently.png>)
 
 - locate your terminal directory into Dir: cd ./model_monitoring
 - Activate the virtual enviroment in one terminal and run: docker-compose up -build

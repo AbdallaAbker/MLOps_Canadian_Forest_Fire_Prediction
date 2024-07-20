@@ -2,4 +2,4 @@
 
 CI/CD Pipeline
 
-![alt text](../snapshots/cicd.png)
+![alt text](<../artifacts/images/cicd.png>)
