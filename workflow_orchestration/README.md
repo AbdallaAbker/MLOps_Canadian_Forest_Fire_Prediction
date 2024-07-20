@@ -1,4 +1,4 @@
-Welcome to the Workflow Orchestration Section :smile:
+## Section 3: Welcome to the Workflow Orchestration :smiley:
 
 ![alt text](../snapshots/prefect.png)
 

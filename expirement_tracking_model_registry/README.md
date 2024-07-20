@@ -1,4 +1,4 @@
-## Welcome to Expirement Tracking  Model Registry Section :wave:
+## Section 2: Welcome to the Expirement Tracking & Model Registry :smiley:
 
 ![alt text](../snapshots/expirement-tracking.png)
 

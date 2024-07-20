@@ -1,5 +1,4 @@
-Welcome to Model Deployment :wave:
-
+## Section 4: Welcome to the Model Deployment :smiley:
 ![alt text](../snapshots/website.png)
 
 

@@ -1,4 +1,4 @@
-## Canadian Forest Fire Prediction
+## Section 1: Welcome to the notebook & experimentations :smiley:
 
 ### Life cycle of Machine learning Project
 - Understanding the Problem Statement
@@ -8,7 +8,6 @@
 - Data Pre-Processing
 - Model Training
 - Choose best model
-
 
 1) Problem statement
     The task is to predict the risk of forest fires in various provinces of Canada based on environmental and geographical factors. The problem is a multi-class classification problem where the target variable has four categories: No Fire, Low Risk, Medium Risk, and High Risk. The goal is to develop a machine learning model that can accurately classify the fire risk level given the feature inputs.
@@ -31,7 +30,6 @@ The dataset consists of the following features:
 - Fire_Seasonality: The season during which the data was recorded. (Categorical)
 - Land_Use: The type of land use in the area. (Categorical)
 - Target: The risk level of forest fire. (Categorical)
-
 
 
 A guide to run the two jupyter notebooks:

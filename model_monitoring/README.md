@@ -1,4 +1,4 @@
-Welcome to the Workflow Orchestration Section :wave:
+## Section 4: Welcome to the Workflow Orchestration :smiley:
 
 ![alt text](../snapshots/eveidently.png)
 
