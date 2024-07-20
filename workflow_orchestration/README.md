@@ -1,4 +1,4 @@
-Welcome to the Workflow Orchestration Section :wave:
+Welcome to the Workflow Orchestration Section :smile:
 
 ![alt text](../snapshots/prefect.png)
 
