@@ -10,6 +10,3 @@
     Postgress db: running in the backend
 - Make sure to stay in the correct directory Dir: cd ./05-model_monitoring and Run: python metrics_calculation.py
 - After the script starts running, it sends data into the Postgress DB, verify the data has been stored in Posgres DB and evidently metrics are visualized in Grafana dashboard
-
-
-

@@ -1,29 +1,32 @@
-import argparse
 import os
+
 import joblib
 import mlflow
 import pandas as pd
 import yaml
 from sklearn.compose import ColumnTransformer
-from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (accuracy_score, f1_score, precision_score,
+                             recall_score)
+from sklearn.model_selection import ParameterGrid
+from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.model_selection import ParameterGrid
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
-
-with open("../artifacts/configs/yaml/preprocessing-params.yaml") as file:
+with open('../artifacts/configs/yaml/preprocessing-params.yaml') as file:
     preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
-    
-experiment_id = preprocessing_params["experiment_id"]
-    
-azure_remote_server_ip_adress= None # Paste Your Remote server Public IP Adress, e.g. "http://XX.XX.XXX.XXX:5000"
+
+experiment_id = preprocessing_params['experiment_id']
+
+azure_remote_server_ip_adress = (
+    None  # Paste Your Remote server Public IP Adress, e.g. "http://XX.XX.XXX.XXX:5000"
+)
 if not azure_remote_server_ip_adress:
-    remote_tracking_uri = "http://0.0.0.0:5000/"  # Run locally If you dont provide the VM remote server public IP address
+    # Run locally If you dont provide the VM remote server public IP address
+    remote_tracking_uri = 'http://0.0.0.0:5000/'
 else:
     remote_tracking_uri = azure_remote_server_ip_adress
 mlflow.set_tracking_uri(remote_tracking_uri)
@@ -41,11 +44,11 @@ def load_preprocessing_params(preprocessing_params_file):
     with open(preprocessing_params_file) as file:
         preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
 
-    modes = preprocessing_params["modes"]
-    medians = preprocessing_params["medians"]
-    num_columns = preprocessing_params["num_columns"]
-    cat_columns = preprocessing_params["cat_columns"]
-    target = preprocessing_params["target_column"]
+    modes = preprocessing_params['modes']
+    medians = preprocessing_params['medians']
+    num_columns = preprocessing_params['num_columns']
+    cat_columns = preprocessing_params['cat_columns']
+    target = preprocessing_params['target_column']
 
     return modes, medians, num_columns, cat_columns, target
 
@@ -61,7 +64,7 @@ def accuracy_measures(y_test, predictions, avg_method):
 def load_model_pipeline(model_pipeline_path):
     """Load preprocessing pipeline and model"""
     baseline_model = joblib.load(
-        os.path.join(model_pipeline_path, "baseline-model.joblib")
+        os.path.join(model_pipeline_path, 'baseline-model.joblib')
     )
 
 
@@ -71,20 +74,22 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
     best_model_name = None
 
     with mlflow.start_run():
-        X_train = read_dataset(os.path.join(dataset_path, "X_train.csv"))
-        y_train = read_dataset(os.path.join(dataset_path, "y_train.csv"))
-        X_test = read_dataset(os.path.join(dataset_path, "X_test.csv"))
-        y_test = read_dataset(os.path.join(dataset_path, "y_test.csv"))
+        X_train = read_dataset(os.path.join(dataset_path, 'X_train.csv'))
+        y_train = read_dataset(os.path.join(dataset_path, 'y_train.csv'))
+        X_test = read_dataset(os.path.join(dataset_path, 'X_test.csv'))
+        y_test = read_dataset(os.path.join(dataset_path, 'y_test.csv'))
 
-        modes, medians, num_columns, cat_columns, target = load_preprocessing_params(preprocessing_params_file)
+        modes, medians, num_columns, cat_columns, target = load_preprocessing_params(
+            preprocessing_params_file
+        )
 
         numeric_transformer = StandardScaler()
         oh_transformer = OneHotEncoder()
 
         preprocessor = ColumnTransformer(
             [
-                ("OneHotEncoder", oh_transformer, cat_columns),
-                ("StandardScaler", numeric_transformer, num_columns),
+                ('OneHotEncoder', oh_transformer, cat_columns),
+                ('StandardScaler', numeric_transformer, num_columns),
             ]
         )
 
@@ -92,10 +97,13 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
             hyperparams = yaml.load(file, Loader=yaml.FullLoader)
 
         for model_name, params in hyperparams['models'].items():
-            print(f"Running experiment for {model_name} with parameters: {params}")
+            print(
+                f'Running experiment for {model_name} with parameters: {params}')
             param_grid = list(ParameterGrid(params))
             for i, param_combination in enumerate(param_grid):
-                print(f"Running with parameter set {i + 1}/{len(param_grid)}: {param_combination}")
+                print(
+                    f'Running with parameter set {i + 1}/{len(param_grid)}: {param_combination}'
+                )
 
                 if model_name == 'LogisticRegression':
                     model = LogisticRegression(**param_combination)
@@ -108,32 +116,34 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
                 elif model_name == 'SVC':
                     model = SVC(**param_combination)
                 else:
-                    raise ValueError(f"Unsupported model: {model_name}")
+                    raise ValueError(f'Unsupported model: {model_name}')
 
                 pipeline = Pipeline(
-                    steps=[("preprocessor", preprocessor), ("model", model)]
+                    steps=[('preprocessor', preprocessor), ('model', model)]
                 )
 
                 pipeline.fit(X_train, y_train)
                 y_pred = pipeline.predict(X_test)
-                
-                accuracy, precision, recall, f1score = accuracy_measures(y_test, y_pred, 'macro')
-                print("accuracy: ", accuracy)
-                print("precision: ", precision)
-                print("recall: ", recall)
-                print("f1score: ", f1score)
 
-                mlflow.log_metric("accuracy", accuracy)
-                mlflow.log_metric("precision", precision)
-                mlflow.log_metric("recall", recall)
-                mlflow.log_metric("f1score", f1score)
+                accuracy, precision, recall, f1score = accuracy_measures(
+                    y_test, y_pred, 'macro'
+                )
+                print('accuracy: ', accuracy)
+                print('precision: ', precision)
+                print('recall: ', recall)
+                print('f1score: ', f1score)
 
-                mlflow.log_param(f"{model_name}_params_{i}", param_combination)
+                mlflow.log_metric('accuracy', accuracy)
+                mlflow.log_metric('precision', precision)
+                mlflow.log_metric('recall', recall)
+                mlflow.log_metric('f1score', f1score)
+
+                mlflow.log_param(f'{model_name}_params_{i}', param_combination)
 
                 if accuracy > best_accuracy:
                     best_accuracy = accuracy
                     best_model = pipeline
-                    best_model_name = f"{model_name}_model_{i}"
+                    best_model_name = f'{model_name}_model_{i}'
 
     return best_model, best_model_name, best_accuracy
 
@@ -141,41 +151,54 @@ def run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file):
 def register_model(best_model, best_model_name, best_accuracy, model_pipeline_path):
     client = mlflow.tracking.MlflowClient()
     # experiment_id = client.get_experiment_by_name("baseline-model-01").experiment_id
-    runs = client.search_runs(experiment_id, order_by=["metrics.accuracy DESC"])
+    runs = client.search_runs(experiment_id, order_by=[
+                              'metrics.accuracy DESC'])
 
     if len(runs) > 0:
         production_run = runs[0]
-        production_accuracy = production_run.data.metrics["accuracy"]
+        production_accuracy = production_run.data.metrics['accuracy']
 
         if best_accuracy > production_accuracy:
-            print(f"New model {best_model_name} with accuracy {best_accuracy} is better than production model with accuracy {production_accuracy}. Promoting new model.")
-            joblib.dump(best_model, os.path.join(model_pipeline_path, "best_model.joblib"))
-            mlflow.register_model(f"runs:/{production_run.info.run_id}/model", "ProductionModel")
-            latest_mv = client.get_latest_versions("ProductionModel")[0]
+            print(
+                f'New model {best_model_name} with accuracy {best_accuracy} is better than production model with accuracy {production_accuracy}. Promoting new model.'
+            )
+            joblib.dump(
+                best_model, os.path.join(
+                    model_pipeline_path, 'best_model.joblib')
+            )
+            mlflow.register_model(
+                f'runs:/{production_run.info.run_id}/model', 'ProductionModel'
+            )
+            latest_mv = client.get_latest_versions('ProductionModel')[0]
             # client.set_registered_model_alias(model_name= "ProductionModel", latest_mv.version)
             client.transition_model_version_stage(
-                name="ProductionModel",
-                version=latest_mv.version,
-                stage="Archived"
+                name='ProductionModel', version=latest_mv.version, stage='Archived'
             )
         else:
-            print(f"New model {best_model_name} with accuracy {best_accuracy} is not better than production model with accuracy {production_accuracy}.")
+            print(
+                f'New model {best_model_name} with accuracy {best_accuracy} is not better than production model with accuracy {production_accuracy}.'
+            )
     else:
-        print(f"No production model found. Registering {best_model_name} as the first production model.")
-        joblib.dump(best_model, os.path.join(model_pipeline_path, "best_model.joblib"))
-        mlflow.register_model(f"runs:/{best_model_name}/model", "ProductionModel")
+        print(
+            f'No production model found. Registering {best_model_name} as the first production model.'
+        )
+        joblib.dump(best_model, os.path.join(
+            model_pipeline_path, 'best_model.joblib'))
+        mlflow.register_model(
+            f'runs:/{best_model_name}/model', 'ProductionModel')
         client.transition_model_version_stage(
-            name="ProductionModel",
-            version=1,
-            stage="Production"
+            name='ProductionModel', version=1, stage='Production'
         )
 
 
-if __name__ == "__main__":
-    dataset_path = "../artifacts/data/processed/"
-    model_pipeline_path = "../artifacts/models/"
-    preprocessing_params_file = "../artifacts/configs/yaml/preprocessing-params.yaml"
-    hyperparams_file = "../artifacts/configs/yaml/hyperparams.yaml"
+if __name__ == '__main__':
+    dataset_path = '../artifacts/data/processed/'
+    model_pipeline_path = '../artifacts/models/'
+    preprocessing_params_file = '../artifacts/configs/yaml/preprocessing-params.yaml'
+    hyperparams_file = '../artifacts/configs/yaml/hyperparams.yaml'
 
-    best_model, best_model_name, best_accuracy = run_hpo_experiment(dataset_path, model_pipeline_path, hyperparams_file)
-    register_model(best_model, best_model_name, best_accuracy, model_pipeline_path)
+    best_model, best_model_name, best_accuracy = run_hpo_experiment(
+        dataset_path, model_pipeline_path, hyperparams_file
+    )
+    register_model(best_model, best_model_name,
+                   best_accuracy, model_pipeline_path)

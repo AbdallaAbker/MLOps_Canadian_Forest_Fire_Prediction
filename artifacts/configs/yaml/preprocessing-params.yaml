@@ -20,4 +20,3 @@ num_columns:
 - Humidity
 - Drought_Index
 target_column: Target
-

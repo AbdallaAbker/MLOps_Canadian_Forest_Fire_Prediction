@@ -1,7 +1,7 @@
 pandas
-mlflow 
+mlflow
 scikit-learn
-fastapi 
+fastapi
 scikit-learn
 PyYAML
 joblib

@@ -3,11 +3,11 @@
 ![alt text](<..//artifacts/images/expirement-tracking.png>)
 
 
-- Activate virtual environment source. e.g. for linux system run: 
+- Activate virtual environment source. e.g. for linux system run:
   ./mlvenv/bin/activate
 - Navigate into expirement tracking directory. for linux system run:
   cd ./02-expirement_tracking_model_registry
-- Run the first script: 
+- Run the first script:
   python preprocessor.py
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 - To store artifacts in Azure Blob Storage, specify a URI of the form wasbs://<container>@<storage-account>.blob.core.windows.net/<path>. MLflow expects that your Azure Storage access credentials are located in the AZURE_STORAGE_CONNECTION_STRING and AZURE_STORAGE_ACCESS_KEY environment variables
 - On seperate terminal activate the mlvenv enviroment again
 - Pass the enviroemntal variable stored in setenv.sh file in the main directory, by running the command for linux: source ../setenv.sh
-- Run the mlflow server. run the following command: 
+- Run the mlflow server. run the following command:
     mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root wasbs://container-name@storage-account.blob.core.windows.net/mlartifacts -h 0.0.0.0 -p 5000
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### To run MLflow Locally:

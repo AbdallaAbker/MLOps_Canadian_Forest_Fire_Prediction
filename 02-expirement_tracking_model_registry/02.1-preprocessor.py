@@ -1,6 +1,4 @@
-import argparse
 import os
-import pickle
 
 import joblib
 import pandas as pd
@@ -25,11 +23,11 @@ def load_preprocessing_params(preprocessing_params_file):
     with open(preprocessing_params_file) as file:
         preprocessing_params = yaml.load(file, Loader=yaml.FullLoader)
 
-    modes = preprocessing_params["modes"]
-    medians = preprocessing_params["medians"]
-    num_columns = preprocessing_params["num_columns"]
-    cat_columns = preprocessing_params["cat_columns"]
-    target = preprocessing_params["target_column"]
+    modes = preprocessing_params['modes']
+    medians = preprocessing_params['medians']
+    num_columns = preprocessing_params['num_columns']
+    cat_columns = preprocessing_params['cat_columns']
+    target = preprocessing_params['target_column']
 
     return modes, medians, num_columns, cat_columns, target
 
@@ -61,8 +59,8 @@ def split_dataset(df, cat_columns, num_columns, target):
 def main(raw_data_path, dest_path, param_path):
 
     df = read_dataset(raw_data_path)
-    modes, medians, num_columns, cat_columns, target = (
-        load_preprocessing_params(preprocessing_params_file)
+    modes, medians, num_columns, cat_columns, target = load_preprocessing_params(
+        preprocessing_params_file
     )
     df = features_fillna(df, modes, medians)
     X_train, y_train, X_test, y_test = split_dataset(
@@ -70,17 +68,17 @@ def main(raw_data_path, dest_path, param_path):
     )
 
     # save datasets
-    store_data(X_train, dest_path, file_name="X_train.csv")
-    store_data(y_train, dest_path, file_name="y_train.csv")
-    store_data(X_test, dest_path, file_name="X_test.csv")
-    store_data(y_test, dest_path, file_name="y_test.csv")
+    store_data(X_train, dest_path, file_name='X_train.csv')
+    store_data(y_train, dest_path, file_name='y_train.csv')
+    store_data(X_test, dest_path, file_name='X_test.csv')
+    store_data(y_test, dest_path, file_name='y_test.csv')
 
 
-if __name__ == "__main__":
-    
-    dataset_file_path = "../artifacts/data/raw/dataset.csv"
-    dest_folder_path = f"../artifacts/data/processed/"
-    model_pipeline_path = "../artifacts/baseline-model.joblib"
-    preprocessing_params_file = "../artifacts/configs/yaml/preprocessing-params.yaml"
+if __name__ == '__main__':
+
+    dataset_file_path = '../artifacts/data/raw/dataset.csv'
+    dest_folder_path = f'../artifacts/data/processed/'
+    model_pipeline_path = '../artifacts/baseline-model.joblib'
+    preprocessing_params_file = '../artifacts/configs/yaml/preprocessing-params.yaml'
 
     main(dataset_file_path, dest_folder_path, preprocessing_params_file)

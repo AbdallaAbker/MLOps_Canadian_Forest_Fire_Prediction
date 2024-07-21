@@ -1,4 +1,4 @@
-## Section 4: Welcome to the Model Deployment :smiley:  
+## Section 4: Welcome to the Model Deployment :smiley:
 
 ### WepApp deployed on Azure Cloud. website: fire-forest-webapp.azurewebsites.net
 
@@ -7,11 +7,11 @@
 
 ![alt text](<../artifacts/images/cicd.png>)
 
-The model has been deployed on Azure Wepp service utilizing the CICD pipline with github actions 
+The model has been deployed on Azure Wepp service utilizing the CICD pipline with github actions
 
 To run the model on Azure Cloud:
 - Provision Azure Web App with container resoure
-- Create Container Registry 
+- Create Container Registry
 - Docker set up in local and push container registry:
     docker build -t aabkeropscontainerregistry.azurecr.io/mlops-fireforest:latest .
 - Configure the GitHub Deployment center
@@ -43,13 +43,12 @@ To run the model on Azure Cloud:
     curl -X POST "http://127.0.0.1:8000/predict" \
     -H "Content-Type: application/json" \
     -d '{
-        "province": "Alberta", 
+        "province": "Alberta",
         "vegetation_type": "Forest",
         "fire_seasonality": "Fall",
         "land_use": "Agricultural",
-        "temperature": 19.90336865, 
+        "temperature": 19.90336865,
         "oxygen": 33.52953236,
         "humidity": 64.96040337,
         "drought_index": 420.461325
     }'
-

@@ -34,7 +34,7 @@ The dataset consists of the following features:
 
 A guide to run the two jupyter notebooks:
 - Create virtual enviroment utilizing the requirements.txt file in the main directory
-- Activate virtual enviroment 
+- Activate virtual enviroment
 - EDA.ipynb:
     ## Data Checks to perform
     - Check Missing values
@@ -49,7 +49,7 @@ A guide to run the two jupyter notebooks:
     - Identify categorical, numerical, and target column
     - Store median, mode, cat_column, nu_column, target_column in YAML file for reproducibility
     - Preprocessing for Categorical & Numerical columns by applying one-hot encoding for categorical columns & standard scaler for for numerical columns
-    - Utilize scikit-learn Pipeline for model training 
+    - Utilize scikit-learn Pipeline for model training
     - Create ML Pipeline for downstream usage
 
 
