@@ -1,0 +1,7 @@
+pandas
+mlflow 
+scikit-learn
+fastapi 
+scikit-learn
+PyYAML
+joblib

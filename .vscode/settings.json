@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "06-best_engineering_practices"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

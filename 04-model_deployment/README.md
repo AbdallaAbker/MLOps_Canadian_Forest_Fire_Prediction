@@ -12,7 +12,8 @@ The model has been deployed on Azure Wepp service utilizing the CICD pipline wit
 To run the model on Azure Cloud:
 - Provision Azure Web App with container resoure
 - Create Container Registry 
-- Docker set up in local and push container registry
+- Docker set up in local and push container registry:
+    docker build -t aabkeropscontainerregistry.azurecr.io/mlops-fireforest:latest .
 - Configure the GitHub Deployment center
 
 - locate terminal to the main Dir: cd ./MLOps_Canadian_Forest_Fire_Prediction
@@ -23,10 +24,32 @@ To run the model on Azure Cloud:
     template folder
 - Utilize the CI/CD pipeline with github actions
 
-To run the model locally:
-- open a new terminal and activate virtul enviorment
-- locate terminal directory to: cd ./04-model_deployment
-- run fast api server by running: 04.1-python main.py
-- verify the server is working by running: python 04.2-score.py
-- Check the model predictions
+
+### To push docker image into Azure Reigstry:
+- Navigate into main directory:
+- Run from terminal:
+  docker build -t {YOUR-CONTAINER-REGISTRY-NAME}.azurecr.io/{YOUR-DOCKER-IMAGE-NAME}:latest .
+  docker login {YOUR-CONTAINER-REGISTRY-NAME}.azurecr.io
+  ENTER user name & password
+  docker push {YOUR-CONTAINER-REGISTRY-NAME}.azurecr.io/{YOUR-DOCKER-IMAGE-NAME}:latest
+
+
+### To run the model locally with no docker:
+- Navigate into main directory:
+  docker build -t test:v1
+  docker run -it --rm -p 8000:8000 test:v1
+  - To debug the newly created app folder inside docker container run: docker run -it --entrypoint=bash test:v1
+  - Run the following command to test the deployment:
+    curl -X POST "http://127.0.0.1:8000/predict" \
+    -H "Content-Type: application/json" \
+    -d '{
+        "province": "Alberta", 
+        "vegetation_type": "Forest",
+        "fire_seasonality": "Fall",
+        "land_use": "Agricultural",
+        "temperature": 19.90336865, 
+        "oxygen": 33.52953236,
+        "humidity": 64.96040337,
+        "drought_index": 420.461325
+    }'
 
