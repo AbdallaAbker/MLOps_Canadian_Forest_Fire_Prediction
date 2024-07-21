@@ -3,8 +3,9 @@
 ![alt text](<../artifacts/images/cicd.png>)
 
 - CI/CD Pipeline: runs every time you push new changes into main branch
-- Run unit test:
-- Run Integration test: 
+- Run unit test & Run Integration test:
+    - cd 06-best_engineering_practices/tests/
+    - Run command on terminal: pytest
 - Run Black: navigate into main dir: run for all code: black .
 - Run isort: isort .
 - Run pre-commit hooks (manually): 

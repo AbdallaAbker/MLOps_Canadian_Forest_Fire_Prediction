@@ -1,10 +1,9 @@
-# integration_test.py
-import app
+# tests/integration_test.py
 import pytest
 from fastapi.testclient import TestClient
+from app import app  # Ensure your FastAPI app is imported correctly
 
 client = TestClient(app)
-
 
 def test_predict_endpoint():
     response = client.post(
@@ -21,9 +20,7 @@ def test_predict_endpoint():
         },
     )
     assert response.status_code == 200
-    # Check if prediction is in the response
     assert 'prediction' in response.json()
 
-
 if __name__ == '__main__':
-    test_predict_endpoint()
+    pytest.main()
