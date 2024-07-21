@@ -2,6 +2,8 @@
 
 ![alt text](<../artifacts/images/cicd.png>)
 
+![alt text](../artifacts/images/unit-test.png)
+
 - CI/CD Pipeline: runs every time you push new changes into main branch
 - Run unit test & Run Integration test:
     - cd 06-best_engineering_practices/tests/

@@ -23,8 +23,8 @@ Tools and Technology:
 - Containerization: Docker, Docker Compose
 
 Guide to the project:
-- Python version: 3.10
-- Linux Operating System: Unbutu 
+- Programming language: Python version 3.10.14
+- Operating System: Linux - Ubuntu 20.04
 - Clone the project:
     git clone https://github.com/AbdallaAbker/MLOps_Canadian_Forest_Fire_Prediction.git
 - Navigate into the project's main directory:
